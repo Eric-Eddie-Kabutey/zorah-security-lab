@@ -1,7 +1,9 @@
+import Hero from "@/components/home/hero";
 
 export default function Home() {
   return (<>
-    {/* Hero section */}    
+    {/* Hero section */}   
+      <Hero />
      {/* Section One */}
       <section 
         id="section-1" 
