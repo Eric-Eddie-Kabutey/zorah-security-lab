@@ -39,8 +39,8 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section className="bg-background min-h-screen py-24 px-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
+    <section className="bg-background min-h-screen py-24">
+      <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-16">
         {/* Left Column: Title */}
         <div className="md:col-span-1">
           <h2 className="text-2xl font-medium text-foreground">Get in touch</h2>
