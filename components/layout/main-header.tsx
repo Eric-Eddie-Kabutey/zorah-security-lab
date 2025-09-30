@@ -4,21 +4,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { AnimatePresence } from 'framer-motion'
 import MobileMenu from './mobile-menu'
-
-// Reusable Logo Component
-const Logo = () => (
-	<Link href='/' className='flex items-center gap-2 text-brand-text'>
-		<span className='text-xl font-bold tracking-wider'>IRREGULAR</span>
-		<svg
-			width='28'
-			height='21'
-			viewBox='0 0 32 24'
-			fill='currentColor'
-			xmlns='http://www.w3.org/2000/svg'>
-			<path d='M0 24H5.33333L32 0H26.6667L0 24Z' />
-		</svg>
-	</Link>
-)
+import BrandLogo from '../logo/brand-logo'
 
 const MainHeader = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -40,7 +26,7 @@ const MainHeader = () => {
 		<>
 			<header className='sticky top-0 z-40 w-full bg-brand-bg/80 backdrop-blur-sm border-b border-gray-200'>
 				<div className='max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 py-5 flex justify-between items-center'>
-					<Logo />
+					<BrandLogo />
 
 					{/* Desktop Navigation */}
 					<nav className='hidden md:flex items-center gap-10 text-brand-text'>
