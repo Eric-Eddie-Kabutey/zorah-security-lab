@@ -1,7 +1,7 @@
 import Contact from "@/components/home/contact";
 // import FeaturedRoles from "@/components/home/featured-roles";
 import Hero from "@/components/home/hero";
-// import Publications from "@/components/home/publications";
+import Publications from "@/components/home/publications";
 import FeaturedRolesSection from "@/components/home/roles/featured-roles";
 import Newsletter from "@/components/shared/news-letter";
 
@@ -11,7 +11,7 @@ export default function Home() {
     <Hero />
 
     {/* Publications section */}
-    {/* <Publications /> */}
+    <Publications />
     
     {/* FeaturedRoles section */}
     {/* <FeaturedRoles /> */}
