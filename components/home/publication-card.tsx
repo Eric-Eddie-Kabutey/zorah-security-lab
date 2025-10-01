@@ -17,13 +17,11 @@ const AbstractIcon = () => (
 
 
 interface PublicationCardProps {
-  publication: Publication;
-  variants: Variants;
+  publication: Publication;  
 }
 
-const PublicationCard: React.FC<PublicationCardProps> = ({ publication, variants }) => {
+const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
   return (
-    <motion.div variants={variants}>
       <Link 
         href={publication.href} 
         className="group block bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 h-full"
@@ -60,8 +58,7 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication, variants
             </div>
           </div>
         </div>
-      </Link>
-    </motion.div>
+      </Link>    
   );
 };
 
