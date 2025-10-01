@@ -46,7 +46,7 @@ const Newsletter: React.FC = () => {
           </div>
 
           {/* Column 2: Description */}
-          <div className="md:col-span-2 max-w-[256px] md:max-w-[236px] mx-auto md:font-medium text-black">
+          <div className="md:col-span-2 max-w-[256px] md:max-w-[236px] md:mx-auto md:font-medium text-black">
             <p>
               Sign up for our newsletter and get notified of irregular updates
             </p>
