@@ -14,6 +14,10 @@ const roles = [
   { title: "The Role You Are Perfect For", href: "/careers/general-application" },
 ];
 
+interface FeaturedRolesProp {
+  visible: boolean
+}
+
 const roleListVariants: Variants = {
   visible: {
     transition: {
@@ -22,13 +26,13 @@ const roleListVariants: Variants = {
   },
 };
 
-const FeaturedRolesSection: React.FC = () => {
+const FeaturedRolesSection= ({visible = true}: FeaturedRolesProp) => {
   return (
     <section className="bg-background py-24 px-6">
-      <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 py-5 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16">
+      <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 py-5 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 overflow-hidden">
         {/* Left Column: Section Title */}
         <div>
-          <h2 className="text-lg font-medium text-foreground">Featured Roles</h2>
+          {visible && <h2 className="text-lg font-medium text-foreground">Featured Roles</h2>}
         </div>
 
         {/* Right Column: Description and Roles List */}
@@ -55,7 +59,7 @@ const FeaturedRolesSection: React.FC = () => {
             ))}
           </motion.div>
 
-          <motion.div 
+          {visible && <motion.div 
             className="mt-12"
             initial="hidden"
             whileInView="visible"
@@ -65,7 +69,7 @@ const FeaturedRolesSection: React.FC = () => {
             <Link href="/careers" className="text-sm font-medium tracking-widest text-foreground/70 hover:text-foreground">
               CAREERS &rarr;
             </Link>
-          </motion.div>
+          </motion.div>}
         </div>
       </div>
     </section>
