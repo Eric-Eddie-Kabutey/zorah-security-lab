@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { contactFormSchema, ContactFormValues } from '@/lib/validators'; // Adjust path
-import { Input, Textarea } from '@/components/ui/form-input'; // Adjust path
+import { contactFormSchema, ContactFormValues } from '@/lib/validators'; 
+import { Input, Textarea } from '@/components/ui/form-input'; 
 
 type SubmissionStatus = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -40,14 +40,14 @@ const Contact: React.FC = () => {
 
   return (
     <section className="bg-background min-h-screen py-24">
-      <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-16">
+      <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-2 overflow-hidden">
         {/* Left Column: Title */}
         <div className="md:col-span-1">
           <h2 className="text-2xl font-medium text-foreground">Get in touch</h2>
         </div>
 
         {/* Right Column: Form */}
-        <div className="md:col-span-2">
+        <div className="md:col-span-2 mt-20 max-w-xl">
           {status === 'success' ? (
             <div className="text-center p-8 border border-green-300 bg-green-50 rounded-lg">
               <h3 className="text-2xl font-semibold text-green-800">Thank you!</h3>
@@ -55,7 +55,7 @@ const Contact: React.FC = () => {
             </div>
           ) : (
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-12">
-              <p className="text-xl text-foreground/90">
+              <p className="text-xl text-black font-medium">
                 Leave a message and we’ll get back to you as soon as possible!
               </p>
               
