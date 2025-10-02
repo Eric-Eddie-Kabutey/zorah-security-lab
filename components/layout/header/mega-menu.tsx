@@ -76,7 +76,11 @@ const MegaMenuDropdown: React.FC<{ item: NavItem }> = ({ item }) => {
                               {/* You can add icon logic back here if needed */}
                               <div>
                                 <p className="font-semibold text-foreground group-hover:text-foreground/70 transition-colors">{link.title}</p>
-                                <p className="text-sm text-foreground/70">{link.description}</p>
+                                        {link.description?.map((item, index) => (
+                                            <p key={index} className="text-sm text-foreground/70">
+                                                {item}
+                                            </p>                                            
+                                        ))}
                               </div>
                             </div>
                           </Link>
