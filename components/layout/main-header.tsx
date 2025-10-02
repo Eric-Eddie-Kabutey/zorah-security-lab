@@ -36,6 +36,9 @@ const MainHeader = () => {
 						<Link href='/about' className='hover:text-gray-600'>
 							About
 						</Link>
+						<Link href='/services' className='hover:text-gray-600'>
+							Services
+						</Link>
 						<Link href='/contact' className='hover:text-gray-600'>
 							Contact
 						</Link>

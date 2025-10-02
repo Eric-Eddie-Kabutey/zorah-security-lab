@@ -63,6 +63,11 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
           </Link>
         </motion.div>
         <motion.div variants={navItemVariants} className="border-b border-muted">
+          <Link href="/services" className="block text-3xl font-medium py-4 hover:text-foreground/70" onClick={onClose}>
+            Services
+          </Link>
+        </motion.div>
+        <motion.div variants={navItemVariants} className="border-b border-muted">
           <Link href="/contact" className="block text-3xl font-medium py-4 hover:text-foreground/70" onClick={onClose}>
             Contact
           </Link>
