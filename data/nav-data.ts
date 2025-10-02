@@ -126,6 +126,10 @@ export const navigationItems: NavItem[] = [
         ],
     },
     {
+        label: 'Product',
+        href: '/product',
+    },
+    {
         label: 'Contact',
         href: '/contact',    
     },
