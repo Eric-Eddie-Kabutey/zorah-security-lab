@@ -5,7 +5,7 @@ import React from 'react';
 const HiringProcess: React.FC = () => {
   return (
     <section id="hiring-process" className="bg-background py-24 px-6">
-      <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16">
+      <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Left Column: Section Title */}
         <div>
           <h2 className="text-lg font-medium text-foreground sticky top-28">

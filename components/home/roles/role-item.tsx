@@ -24,7 +24,7 @@ const RoleItem: React.FC<RoleItemProps> = ({ title, href }) => {
       */}
       <Link
         href={href}
-        className="group flex items-center justify-between border-b border-muted py-8 -mx-8 px-8 transition-colors duration-300 hover:bg-blue-300"
+        className="group flex items-center justify-between border-b border-muted py-8 -mx-8 px-8 transition-colors duration-300 hover:bg-blue-200"
       >
         {/* Left side group for the appearing arrow and title */}
         <div className="flex items-center gap-6">
