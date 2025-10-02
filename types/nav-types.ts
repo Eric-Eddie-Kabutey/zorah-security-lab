@@ -1,7 +1,7 @@
 export type MegaMenuLink = {
     icon?: string;
     title: string;
-    description?: string;
+    description?: string[];
     href: string;
 };
 
