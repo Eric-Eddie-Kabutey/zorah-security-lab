@@ -2,6 +2,7 @@ import Hero from '@/components/services/hero'
 import ServicesGrid from '@/components/services/service-grid'
 import ServicesListing from '@/components/services/services-listing'
 import Divider from '@/components/shared/divider'
+import Newsletter from '@/components/shared/news-letter'
 
 export default function AboutPage() {
     return (<>
@@ -20,5 +21,8 @@ export default function AboutPage() {
 
         {/* Services cards */}
         <ServicesGrid />
+
+        {/* Newsletter section */}
+        <Newsletter />
     </>)
 }
