@@ -15,109 +15,111 @@ export const navigationItems: NavItem[] = [
         href: '#',
         megaMenuContent: [
             {
-                title: 'Digital Forensics',                
+                title: 'Digital Forensics',    
+                description: 'Some description coming some for digital forensics',
                 linkLayout: 'list',
                 links: [
                     {
                         title: 'Computer Forensics',
-                        description: ['Any business willing to start', 'grow or scale digital asset '],
+                        imgUrl: '/assets/icons/setting.png',
                         href: '/digital-forensics#computerforensics',
                     },
                     {
                         title: 'Mobile Forensics',   
-                        description: ['Any business willing to start', 'grow or scale digital asset '],
+                        imgUrl: '/assets/icons/setting.png',
                         href: '/digital-forensics#mobileforensics',
                     },
                     {
                         title: 'ECU Forensics',  
-                        description: ['Any business willing to start', 'grow or scale digital asset '],
+                        imgUrl: '/assets/icons/setting.png',
                         href: '/digital-forensics#ecuforensics',
                     },  
                     {
                         title: 'Drone Forensics',
-                        description: ['Any business willing to start', 'grow or scale digital asset '],
+                        imgUrl: '/assets/icons/setting.png',
                         href: '/digital-forensics#drone-forensics',
                     },  
                 ],
             },
             {
-                title: 'Cyber Enable Crime',               
+                title: 'Cyber Enable Crime',  
+                description: 'Some description coming some for cyber enable crime',
                 linkLayout: 'list',
                 links: [
                     {
                         title: 'BEC Investigation',    
-                        description: ['Any business willing to start', 'grow or scale digital asset '],
+                        imgUrl: '/assets/icons/setting.png',
                         href: '/cyber-enable-crime#bec-investigations',
                     },
                     {
                         title: 'Penetration Testing',  
-                        description: ['Any business willing to start', 'grow or scale digital asset '],
+                        imgUrl: '/assets/icons/setting.png',
                         href: '/cyber-enable-crime#penetration-testing',
                     },
                     {
                         title: 'Data Breach Investigation', 
-                        description: ['Any business willing to start', 'grow or scale digital asset '],
+                        imgUrl: '/assets/icons/setting.png',
                         href: '/cyber-enable-crime#data-breach-investigation',
                     },
                     {
                         title: 'Malware (Viral) Remote',  
-                        description: ['Any business willing to start', 'grow or scale digital asset '],
+                        imgUrl: '/assets/icons/setting.png',
                         href: '/cyber-enable-crime#malware-viral-remote',
                     },
                 ],
-            },
+            },            
             {
-                title: 'Automotive Investigation',                
-                linkLayout: 'list',
-                links: [
-                    {
-                        title: 'Stolen Vehicle Investigation', 
-                        description: ['Any business willing to start', 'grow or scale digital asset '],
-                        href: '/automotive-investigation#stolenvehicleinvestigation',
-                    },
-                    {
-                        title: 'Rental Car Theft',   
-                        description: ['Any business willing to start', 'grow or scale digital asset '],
-                        href: '/automotive-investigation#rentalcartheft',
-                    },
-                    {
-                        title: 'OEM Terematics',
-                        description: ['Any business willing to start', 'grow or scale digital asset '],
-                        href: '/automotive-investigation#oem',
-                    },
-                    {
-                        title: 'Patrol Emergency and Intelligent',
-                        description: ['Any business willing to start', 'grow or scale digital asset '],
-                        href: '/automotive-investigation#patrolemergencyintelligent',
-                    },
-                ],
-            },
-            {
-                title: 'Network Intelligence',            
+                title: 'Network Intelligence',     
+                description: 'Some description coming some for network intelligence',
                 linkLayout: 'list',
                 links: [
                     {
                         title: 'Ethical Hacking Team',  
-                        description:
-                            ['Any business willing to start', 'grow or scale digital asset '],
+                        imgUrl: '/assets/icons/setting.png',
                         href: '/network-intelligence#ethical-hacking',
                     },
                     {
                         title: 'WIFI Probe',      
-                        description:
-                            ['Any business willing to start', 'grow or scale digital asset '],
+                        imgUrl: '/assets/icons/setting.png',
                         href: '/network-intelligence#wifi-probe',
                     },
                     {
                         title: 'RSL Hacking Van',
-                        description: ['Any business willing to start', 'grow or scale digital asset '],
+                        imgUrl: '/assets/icons/setting.png',
                         href: '/network-intelligence#rls-hacking-van',
                     },
                     {
                         title: 'GSM Jamming Detector',
-                        description:
-                            ['Any business willing to start', 'grow or scale digital asset '],
+                        imgUrl: '/assets/icons/setting.png',
                         href: '/network-intelligence#gms-jamming-detector',
+                    },
+                ],
+            },
+            {
+                title: 'Automotive Investigation',
+                description: 'Some description coming some for automotive investigation',
+                linkLayout: 'list',
+                links: [
+                    {
+                        title: 'Stolen Vehicle Investigation',
+                        imgUrl: '/assets/icons/setting.png',                        
+                        href: '/automotive-investigation#stolenvehicleinvestigation',
+                    },
+                    {
+                        title: 'Rental Car Theft',
+                        imgUrl: '/assets/icons/setting.png',                        
+                        href: '/automotive-investigation#rentalcartheft',
+                    },
+                    {
+                        title: 'OEM Terematics',
+                        imgUrl: '/assets/icons/setting.png',                        
+                        href: '/automotive-investigation#oem',
+                    },
+                    {
+                        title: 'Patrol Emergency and Intelligent',
+                        imgUrl: '/assets/icons/setting.png',                        
+                        href: '/automotive-investigation#patrolemergencyintelligent',
+                        hasBnt: true
                     },
                 ],
             },
