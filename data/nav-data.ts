@@ -12,7 +12,7 @@ export const navigationItems: NavItem[] = [
     }, 
     {
         label: 'Services',
-        href: '/services',
+        href: '#',
         megaMenuContent: [
             {
                 title: 'Digital Forensics',
@@ -21,72 +21,81 @@ export const navigationItems: NavItem[] = [
                 linkLayout: 'list',
                 links: [
                     {
-                        title: 'Cryptocurrencies',
-                        description: 'Custody, stake and manage crypto incl. NFT >',
-                        href: '/solutions/crypto',
+                        title: 'Computer Forensics',
+                        href: '/digital-forensics#computerforensics',
                     },
                     {
-                        title: 'Tokenized assets',
-                        description: 'Digitize, tokenize any asset on any standard >',
-                        href: '/solutions/tokenized-assets',
+                        title: 'Mobile Forensics',                        
+                        href: '/digital-forensics#mobileforensics',
                     },
                     {
-                        title: 'Stablecoins',
-                        description: 'Issue, book, transact stablecoins, CBDC >',
-                        href: '/solutions/stablecoins',
-                    },
+                        title: 'ECU Forensics',                        
+                        href: '/digital-forensics#ecuforensics',
+                    },                    
                 ],
             },
             {
-                title: 'Cyber Crime',
+                title: 'Cyber Enable Crime',
                 description:
                     'Any business willing to start, grow or scale digital asset activity with an enterprise-grade infrastructure',
                 linkLayout: 'list',
                 links: [
                     {
-                        title: 'Banks and financial institutions',
-                        description: 'Start, expand your digital asset product offering >',
-                        href: '/for/banks',
+                        title: 'BEC Investigation',                    
+                        href: '/cyber-enable-crime#bec-investigations',
                     },
                     {
-                        title: 'Others',
-                        description: 'Technology providers, private companies, etc. >',
-                        href: '/for/others',
+                        title: 'Penetration Testing',                        
+                        href: '/cyber-enable-crime#penetration-testing',
+                    },
+                    {
+                        title: 'Data Breach Investigation',                        
+                        href: '/cyber-enable-crime#data-breach-investigation',
+                    },
+                    {
+                        title: 'Malware (Viral) Remote',                        
+                        href: '/cyber-enable-crime#malware-viral-remote',
                     },
                 ],
             },
             {
-                title: 'Auto Motive',
+                title: 'Automotive Investigation',
                 description:
                     'Any business willing to start, grow or scale digital asset activity with an enterprise-grade infrastructure',
                 linkLayout: 'list',
                 links: [
                     {
-                        title: 'Banks and financial institutions',
-                        description: 'Start, expand your digital asset product offering >',
-                        href: '/for/banks',
+                        title: 'Stolen Vehicle Investigation',                        
+                        href: '/automotive-investigation#stolenvehicleinvestigation',
                     },
                     {
-                        title: 'Others',
-                        description: 'Technology providers, private companies, etc. >',
-                        href: '/for/others',
+                        title: 'Rental Car Theft',                        
+                        href: '/automotive-investigation#rentalcartheft',
+                    },
+                    {
+                        title: 'OEM Terematics',
+                        href: '/automotive-investigation#oem',
+                    },
+                    {
+                        title: 'Patrol Emergency and Intelligent',
+                        href: '/automotive-investigation#patrolemergencyintelligent',
                     },
                 ],
             },
             {
-                title: 'Network Integration',
-                description:
-                    'Any business willing to start, grow or scale digital asset activity with an enterprise-grade infrastructure',
+                title: 'Network Integration',            
                 linkLayout: 'list',
                 links: [
                     {
-                        title: 'Banks and financial institutions',
-                        description: 'Start, expand your digital asset product offering >',
+                        title: 'Banks and financial institutions',  
+                        description:
+                            'Any business willing to start, grow or scale digital asset ',
                         href: '/for/banks',
                     },
                     {
-                        title: 'Others',
-                        description: 'Technology providers, private companies, etc. >',
+                        title: 'Others',      
+                        description:
+                            'Any business willing to start, grow or scale digital asset ',
                         href: '/for/others',
                     },
                 ],

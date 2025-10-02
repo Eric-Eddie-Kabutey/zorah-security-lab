@@ -1,13 +1,13 @@
 export type MegaMenuLink = {
     icon?: string;
     title: string;
-    description: string;
+    description?: string;
     href: string;
 };
 
 export type MegaMenuColumn = {
     title: string;
-    description: string;
+    description?: string;
     // This new property will let us style link groups, e.g., as a grid
     linkLayout?: 'list' | 'grid';
     links: MegaMenuLink[];
