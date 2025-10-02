@@ -7,7 +7,7 @@ import BottomFooter from './bottom-footer';
 const Footer: React.FC = () => {  
 
   return (
-    <footer className="bg-background text-foreground border-t border-muted">
+    <footer className="bg-background text-foreground">
       <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 py-16">
         {/* Top section: Logo and Connect Info */}
         <div className="max-w-2xl flex flex-col md:flex-row justify-between items-start gap-12">
