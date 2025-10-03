@@ -6,11 +6,12 @@ import TableOfContents from '@/components/post/table-of-content';
 
 interface ServiceLayoutProps {
     post: ServiceFrontmatter;
-    categorySlug: string;
-  children: React.ReactNode;
+    children: React.ReactNode;
+  categorySlug: string;
+  relatedServices?: React.ReactNode;
 }
 
-const ServiceLayout: React.FC<ServiceLayoutProps> = ({ post, categorySlug, children }) => {
+const ServiceLayout: React.FC<ServiceLayoutProps> = ({ post, categorySlug, children, relatedServices }) => {
       // Helper to format the slug for display (e.g., "digital-forensics" -> "DIGITAL FORENSICS")
   const formattedCategoryName = categorySlug.replace(/-/g, ' ').toUpperCase();
   return (
@@ -21,7 +22,7 @@ const ServiceLayout: React.FC<ServiceLayoutProps> = ({ post, categorySlug, child
           <h1 className="text-4xl md:text-6xl font-serif leading-tight mb-4">{post.title}</h1>
           <p className="text-lg text-foreground/80 max-w-2xl mx-auto">{post.summary}</p>
           {post.coverImage && (
-            <div className="relative mt-12 aspect-[16/9] w-full rounded-xl overflow-hidden shadow-md">
+            <div className="relative mt-12 w-full max-w-5xl mx-auto h-[200px] md:h-[300px] overflow-hidden rounded-xl">
               <Image
                 src={post.coverImage}
                 alt={`Cover image for ${post.title}`}
@@ -48,6 +49,11 @@ const ServiceLayout: React.FC<ServiceLayoutProps> = ({ post, categorySlug, child
           <div className="prose prose-lg max-w-none prose-p:text-foreground/80 prose-headings:text-foreground prose-a:text-blue-600 prose-strong:text-foreground">
             {children}
           </div>
+
+          <div className="mt-16">
+            {relatedServices}
+          </div>
+
           <div className="mt-24 pt-8 border-t border-muted">
             <Link href={`/services/${categorySlug}`} className="text-sm font-medium tracking-widest text-foreground/70 hover:text-foreground">
               &larr; ALL {formattedCategoryName}
