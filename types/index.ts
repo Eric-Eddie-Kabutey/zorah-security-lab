@@ -16,11 +16,19 @@ export interface Publication {
     content?: React.ReactNode;
 }
 
-// This represents the shape of the frontmatter data *plus* the slug
-export type PublicationFrontmatter = Omit<Publication, 'content'>;
+export type PublicationFrontmatter = Omit<Publication, 'content'> & { collaborator?: string };
+export interface MdxPublicationPageData { frontmatter: PublicationFrontmatter; content: string; }
 
-// This is the new return type for our refactored function
-export interface MdxPageData {
-    frontmatter: PublicationFrontmatter;
-    content: string; // This will be the raw MDX string
+
+export type ServicesContentType = 'digital forensics' | 'cyber enable crime' | 'network intelligence' | 'automotive investigation';
+export interface Service {
+    slug: string;
+    title: string;
+    type: ServicesContentType;
+    publishedDate: string; // Using a common name for sorting
+    summary: string;
+    coverImage?: string | StaticImageData;
+    content?: React.ReactNode;
 }
+export type ServiceFrontmatter = Omit<Service, 'content'>;
+export interface MdxServicePageData { frontmatter: ServiceFrontmatter; content: string; }
