@@ -5,6 +5,7 @@ import { getServiceBySlug, getServicesByCategory } from '@/lib/mdx'
 import ServiceLayout from '@/components/services/service-layout'
 import RelatedServices from '@/components/services/relative-services'
 import { compileMDX } from 'next-mdx-remote/rsc'
+import { mdxComponents } from '@/mdx-components'
 
 interface ServiceDetailPageProps {
 	params: Promise<{
@@ -46,7 +47,8 @@ export default async function ServiceDetailPage({
 	const { frontmatter, content: mdxSource } = serviceData
 
 	const { content } = await compileMDX({
-		source: mdxSource,
+    source: mdxSource,
+    components: mdxComponents,
 		options: { parseFrontmatter: false },
 	})
 
