@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
-import ServiceCard, { cardVariants } from './service-card';
+import ServiceCard from './service-card';
 
 // Mock data for the services. In a real app, this might come from a CMS.
 const services = [
