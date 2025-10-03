@@ -1,71 +1,99 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { Publication, MdxPageData, PublicationFrontmatter } from '@/types';
+import {
+    PublicationFrontmatter, MdxPublicationPageData,
+    ServiceFrontmatter, MdxServicePageData
+} from '@/types';
 
-// 1. Define the path to your content directory
-const POSTS_PATH = path.join(process.cwd(), 'content/publications');
-const contentDirectory = path.join(process.cwd(), 'content');
+// Define paths for both content types
+const PUBLICATIONS_PATH = path.join(process.cwd(), 'content/publications');
+const SERVICES_PATH = path.join(process.cwd(), 'content/services');
 
-/**
- * Reads all .mdx files from the content directory, parses their frontmatter,
- * and returns them as an array of Publication objects, sorted by date.
- */
-export const getAllPublications = (): Publication[] => {
-    // 2. Get all filenames from the directory
-    const fileNames = fs.readdirSync(POSTS_PATH);
+// A generic function to get all posts from a directory
+const getAllPosts = <T extends { publishedDate: string; slug: string }>(directoryPath: string): T[] => {
+    const fileNames = fs.readdirSync(directoryPath);
 
     const allPosts = fileNames
-        .filter(fileName => fileName.endsWith('.mdx')) // Ensure we only read .mdx files
+        .filter(fileName => fileName.endsWith('.mdx'))
         .map(fileName => {
-            // 3. Read the file content
-            const filePath = path.join(POSTS_PATH, fileName);
+            const filePath = path.join(directoryPath, fileName);
             const fileContent = fs.readFileSync(filePath, 'utf8');
-
-            // 4. Parse the frontmatter using gray-matter
             const { data } = matter(fileContent);
-
-            // 5. Generate the slug from the filename
             const slug = fileName.replace(/\.mdx$/, '');
-
-            // 6. Return the structured data, ensuring types are correct
-            return {
-                ...(data as Omit<Publication, 'slug'>), // Cast the data to match your type
-                slug,
-            } as Publication;
+            
+            return { ...data, slug } as T;
         });
 
-    // 7. Sort posts by publishedDate in descending order (newest first)
-    const sortedPosts = allPosts.sort((a, b) =>
-        new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime()
-    );
+    return allPosts.sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime());
+};
 
-    return sortedPosts;
+// Specific functions for each content type
+export const getAllPublications = (): PublicationFrontmatter[] => getAllPosts<PublicationFrontmatter>(PUBLICATIONS_PATH);
+export const getAllServices = (): ServiceFrontmatter[] => getAllPosts<ServiceFrontmatter>(SERVICES_PATH);
+
+
+// A generic function to get a single post by slug
+const getPostBySlug = <T extends { slug: string }>(directoryPath: string, slug: string): { frontmatter: T; content: string } | null => {
+    try {
+        const filePath = path.join(directoryPath, `${slug}.mdx`);
+        console.log("filepath", filePath);
+        
+        const fileContent = fs.readFileSync(filePath, 'utf8');
+        const { data, content } = matter(fileContent);
+        return {
+            frontmatter: { ...data, slug } as T, 
+            content,
+        };
+    } catch (error) {
+        console.error(`Error reading content from "${directoryPath}" with slug "${slug}":`, error);
+        return null;
+    }
 };
 
 
-/**
- * Finds a specific publication by its slug and returns its frontmatter
- * and raw MDX content separately.
+/** 
+ * Reads all .mdx files from a specific category sub-directory within services,
+ * parses their frontmatter, and returns them as an array.
  */
-export const getPublicationBySlug = (slug: string): MdxPageData | null => {
-    try {
-        const filePath = path.join(POSTS_PATH, `${slug}.mdx`);
-        const fileContent = fs.readFileSync(filePath, 'utf8');
+export const getServicesByCategory = (category: string): ServiceFrontmatter[] => {
+    console.log("category", category);
+    
+    const categoryPath = path.join(SERVICES_PATH, category);
+    console.log("path", categoryPath);
+    
 
-        // This part is the same: parse the file.
+    // Check if the category directory exists to prevent errors
+    if (!fs.existsSync(categoryPath)) {
+        console.warn(`Warning: Category directory not found at: ${categoryPath}`);
+        return [];
+    }
+
+    // We can reuse our generic getAllPosts function by passing the specific category path!
+    return getAllPosts<ServiceFrontmatter>(categoryPath);
+};
+
+// Specific functions for each content type
+export const getPublicationBySlug = (slug: string): MdxPublicationPageData | null => getPostBySlug<PublicationFrontmatter>(PUBLICATIONS_PATH, slug);
+
+
+export const getServiceBySlug = (category: string, slug: string): MdxServicePageData | null => {
+    // Construct the full, correct path including the category
+    const filePath = path.join(SERVICES_PATH, category, `${slug}.mdx`);
+
+    try {
+        const fileContent = fs.readFileSync(filePath, 'utf8');
         const { data, content } = matter(fileContent);
 
-        // This is the key change: structure the return value as requested.
         return {
             frontmatter: {
-                ...(data as Omit<Publication, 'slug' | 'content'>),
-                slug, // Add the slug to the frontmatter object
+                ...(data as Omit<ServiceFrontmatter, 'slug'>),
+                slug,
             },
-            content, // The raw MDX content string
+            content,
         };
     } catch (error) {
-        console.error(`Error reading publication with slug "${slug}":`, error);
+        console.error(`Error reading service file at: ${filePath}`, error);
         return null;
     }
 };
