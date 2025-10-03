@@ -36,25 +36,28 @@ const ServiceLayout: React.FC<ServiceLayoutProps> = ({ post, categorySlug, child
       </header>
 
       {/* Section 2: Main Content Grid */}
-      <div className="py-24 px-6 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-x-12 lg:gap-x-24">
+      <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 py-5 grid grid-cols-1 lg:grid-cols-5 gap-x-4">
         {/* Left Column: Table of Contents */}
         <aside className="hidden md:block md:col-span-2">
           <div className="sticky top-28">
+            <h3 className="text-sm md:text-lg font-medium tracking-widest text-foreground/70 mb-4">
+        In this document
+      </h3>
             <TableOfContents />
           </div>
         </aside>
 
         {/* Right Column: MDX Content */}
-        <div className="md:col-span-3">
+        <div className="lg:col-span-3 max-w-[572px] mx-auto md:-ml-20">
           <div className="prose prose-lg max-w-none prose-p:text-foreground/80 prose-headings:text-foreground prose-a:text-blue-600 prose-strong:text-foreground">
             {children}
           </div>
 
-          <div className="mt-16">
+          <div className="mt-16 border-t border-muted">
             {relatedServices}
           </div>
 
-          <div className="mt-24 pt-8 border-t border-muted">
+          <div className="mt-16 pt-8 border-t border-muted">
             <Link href={`/services/${categorySlug}`} className="text-sm font-medium tracking-widest text-foreground/70 hover:text-foreground">
               &larr; ALL {formattedCategoryName}
             </Link>
