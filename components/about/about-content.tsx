@@ -27,17 +27,17 @@ const AboutContent: React.FC = () => {
       <div className="max-w-2xl mx-auto text-center">
         {/* The main text content */}
         <div className="prose prose-xl max-w-none prose-p:text-foreground/90 mx-auto text-left">
-          <p className='text-black font-normal md:font-medium text-lg mb-2'>
-            Irregular is the first frontier security lab with the mission of protecting 
-            the world in the time of increasingly capable and sophisticated AI systems. 
-            We build next-generation defenses through high-fidelity research platforms 
-            that simulate and monitor real-world AI security scenarios.
-                  </p>
-                  <br />
-          <p className='text-black font-normal md:font-medium text-lg mb-2'>
-            As AI systems become more powerful, we focus on staying ahead of emerging 
-            threats and vulnerabilities, ensuring these transformative technologies 
-            can be deployed safely and securely.
+          <p className='text-black font-normal md:font-medium text-lg mb-2 md:mb-4'>
+            Zorah Security Lab secures the physical and digital frontiers for clients across Africa. We are the first line of defense against sophisticated cybercrime, dedicated to neutralizing threats from data breaches and business email compromise to advanced malware.
+                  </p>                  
+          <p className='text-black font-normal md:font-medium text-lg mb-2 md:mb-4'>
+           Our mission extends into the digital core of modern systems. We specialize in forensic investigations, extracting critical evidence from computers, mobile devices, and vehicle electronics to uncover the truth. This expertise is mirrored in our physical security operations, where we leverage direct vehicle telematics and a continent-wide tracking network to locate and recover stolen assets.
+
+          </p>
+
+          <p className='text-black font-normal md:font-medium text-lg mb-2 md:mb-4'>
+          From penetration testing and wireless integrity services to active patrols and intelligence-led recovery, we provide end-to-end protection. For our partners in The Gambia, Senegal, Ghana, Sierra Leone, Liberia, and South Africa, Zorah Security Lab is the single, trusted partner ensuring operational security and resilience.
+            
           </p>
         </div>
         
