@@ -37,12 +37,12 @@ const Hero: React.FC = () => {
       <div className="mt-12 lg:mt-8 max-w-3xl mx-auto">
         {/* Main Heading */}
         <h1 className="text-3xl  mg:text-5xl md:text-7xl font-serif text-black font-medium leading-tight">
-          Frontier AI Security
+          Digital Forensics & Business Security 
         </h1>
 
         {/* Subheading */}
         <p className="mt-6 max-w-[476px] mx-auto text-lg text-black font-medium leading-relaxed">
-          Irregular is the first frontier security lab with the mission of protecting the world in the time of increasingly capable and sophisticated AI systems.
+          Zorah Security Lab is the first integrated partner dedicated to securing Critical Governmenet and Business Digital Integrity, critical infrastructure and assets by unifying cyber defence, digital forensics, investigations and physical asset recovery under one command.
         </p>
       </div>
 
