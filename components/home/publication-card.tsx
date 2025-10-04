@@ -26,9 +26,9 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
         href={publication.href} 
         className="group block bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 h-full"
       >
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full p-4">
           {/* Card Cover Image */}
-          <div className="relative w-full aspect-[16/9] overflow-hidden rounded-t-2xl">
+          <div className="relative w-full aspect-[16/9] overflow-hidden rounded-t-2xl mb-6">
             <Image
               src={publication.coverImage}
               alt={`Cover image for ${publication.title}`}
@@ -38,12 +38,9 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
           </div>
 
           {/* Card Content */}
-          <div className="p-8 flex flex-col flex-grow">
-            <div className="mb-6">
-              <AbstractIcon />
-            </div>
+          <div className="flex flex-col flex-grow">           
 
-            <h3 className="text-2xl font-medium text-foreground mb-6 flex-grow">
+            <h3 className="text-xl font-medium text-foreground mb-4 flex-grow">
               {publication.title}
             </h3>
 
@@ -52,7 +49,7 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
               <p className="font-bold text-foreground mt-1">{publication.partner}</p>
             </div>
             
-            <div className="mt-8 text-sm font-medium text-foreground/80 flex items-center gap-2 group-hover:text-foreground">
+            <div className="mt-4 text-sm font-medium text-foreground/80 flex items-center gap-2 group-hover:text-foreground">
               Read more
               <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
             </div>
