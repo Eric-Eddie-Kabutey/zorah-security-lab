@@ -1,6 +1,8 @@
 import PageHeader from '@/components/shared/page-header';
 import ServicesList from '@/components/services/services-list';
 import { getServicesByCategory } from '@/lib/mdx';
+import Newsletter from '@/components/shared/news-letter';
+import ServicesGrid from '@/components/services/service-grid';
 
 export default async function CyberEnableCrimeForensicsPage() {
   // Define the specific category for this page
@@ -28,6 +30,12 @@ export default async function CyberEnableCrimeForensicsPage() {
         */}
         <ServicesList services={services} categorySlug={categorySlug} />
       </section>
+
+      {/* services grid section */}
+        <ServicesGrid />
+
+      {/* Newsletter section */}
+        <Newsletter />
     </>
   );
 }
