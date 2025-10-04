@@ -16,7 +16,7 @@ const TableOfContents: React.FC = () => {
   useEffect(() => {
     // Find all h2 and h3 tags *inside the prose container*
     const headingElements = Array.from(
-      document.querySelectorAll('.prose h2, .prose h3')
+      document.querySelectorAll('.prose h2, .prose h3, .prose h4, .prose h5')
     ) as HTMLElement[];
 
     const extractedHeadings = headingElements.map(heading => {

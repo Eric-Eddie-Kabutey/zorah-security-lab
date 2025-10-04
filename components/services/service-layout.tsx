@@ -36,7 +36,7 @@ const ServiceLayout: React.FC<ServiceLayoutProps> = ({ post, categorySlug, child
       </header>
 
       {/* Section 2: Main Content Grid */}
-      <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 py-5 grid grid-cols-1 lg:grid-cols-5 gap-x-4">
+      <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 py-5 grid grid-cols-1 lg:grid-cols-5 gap-x-4 lg:gap-x-12">
         {/* Left Column: Table of Contents */}
         <aside className="hidden md:block md:col-span-2">
           <div className="sticky top-28">
