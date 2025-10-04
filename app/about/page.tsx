@@ -10,7 +10,7 @@ export default function AboutPage() {
 				{/* empty space */}
 				<div className='hidden lg:block lg:col-span-2'></div>
 
-				<div className='lg:col-span-3 max-w-[572px] mx-auto md:-ml-20'>
+				<div className='lg:col-span-3 max-w-[572px] md:mx-auto md:-ml-20 px-6 md:px-0'>
 					<PageHeader title='About Zorah Security Lab' />
 					{/* About content section */}
 					<AboutContent />

@@ -15,7 +15,13 @@ export default async function DigitalForensicsPage() {
   return (
     <>
       {/* Render the PageHeader with the correct title */}
-      <PageHeader title={pageTitle} />
+      <div className='grid grid-cols-1 lg:grid-cols-5'>
+				  {/* empty space */}
+          <div className='hidden lg:block lg:col-span-2'></div>
+          <div className='lg:col-span-3 max-w-[572px] md:mx-auto md:-ml-20 px-6 md:px-0'>          
+            <PageHeader title={pageTitle} />
+          </div>
+        </div>
 
       <section className="bg-background py-16 md:py-24 px-6">
         {/* 

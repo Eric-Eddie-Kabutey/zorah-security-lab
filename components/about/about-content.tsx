@@ -23,7 +23,7 @@ const partnerGroups = [
 
 const AboutContent: React.FC = () => {
   return (
-    <section className="bg-background -mt-12 md:-mt-18 pb-16 md:pb-24 px-6">
+    <section className="bg-background -mt-12 md:-mt-18 pb-16 md:pb-24">
       <div className="max-w-2xl mx-auto text-center">
         {/* The main text content */}
         <div className="prose prose-xl max-w-none prose-p:text-foreground/90 mx-auto text-left">
