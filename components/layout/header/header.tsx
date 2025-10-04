@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { AnimatePresence } from 'framer-motion';
 
 import AnnouncementBanner from './announcement-banner';
-import MainHeader from './header/main-header';
+import MainHeader from './main-header';
 
 const Header = () => {
   const [isAtTop, setIsAtTop] = useState(true);
