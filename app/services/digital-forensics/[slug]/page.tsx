@@ -6,6 +6,7 @@ import ServiceLayout from '@/components/services/service-layout'
 import RelatedServices from '@/components/services/relative-services'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import { mdxComponents } from '@/mdx-components'
+import Newsletter from '@/components/shared/news-letter'
 
 interface ServiceDetailPageProps {
 	params: Promise<{
@@ -47,8 +48,8 @@ export default async function ServiceDetailPage({
 	const { frontmatter, content: mdxSource } = serviceData
 
 	const { content } = await compileMDX({
-    source: mdxSource,
-    components: mdxComponents,
+		source: mdxSource,
+		components: mdxComponents,
 		options: { parseFrontmatter: false },
 	})
 
@@ -62,11 +63,16 @@ export default async function ServiceDetailPage({
 	)
 
 	return (
-		<ServiceLayout
-			post={frontmatter}
-			categorySlug={CATEGORY}
-			relatedServices={relatedServicesComponent}>
-			{content}
-		</ServiceLayout>
+		<>
+			<ServiceLayout
+				post={frontmatter}
+				categorySlug={CATEGORY}
+				relatedServices={relatedServicesComponent}>
+				{content}
+			</ServiceLayout>
+
+			{/* Newsletter section */}
+			<Newsletter />
+		</>
 	)
 }
