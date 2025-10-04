@@ -50,7 +50,7 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
         animate="visible"
       >
         {mainNavItems.map((item) => 
-          item.megaMenuContent ? (
+          item.dropdownMenuContent ? (
             <MobileAccordion key={item.label} item={item} onClose={onClose} />
           ) : (
             <div key={item.label} className="border-b border-muted">
@@ -68,7 +68,7 @@ const MobileMenu = ({ onClose }: MobileMenuProps) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { delay: 0.5 } }}
         >
-          <Link href={joinNavItem.href} className="block w-full text-center bg-muted text-foreground font-medium py-4 px-6 rounded-full hover:bg-accent" onClick={onClose}>
+          <Link href={joinNavItem.href} className="block w-full text-center bg-sky-50 text-foreground font-medium py-4 px-6 rounded-full hover:bg-accent" onClick={onClose}>
             {joinNavItem.label} &rarr;
           </Link>
         </motion.div>

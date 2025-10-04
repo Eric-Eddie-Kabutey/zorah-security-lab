@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { AnimatePresence } from 'framer-motion';
 import MobileMenu from './mobile-menu'; 
 import Logo from '@/components/logo/brand-logo';
-import MegaMenuDropdown from './mega-menu';
+import MegaMenuDropdown from './menu-dropdown';
 
 import { navigationItems } from '@/data/nav-data';
 
@@ -30,13 +30,15 @@ const MainHeader = () => {
           <nav className="hidden md:block">
             <ul className="flex items-center gap-8">
               {mainNavItems.map((item) => (
-                <MegaMenuDropdown key={item.label} item={item} />
+                <li key={item.label}>
+                  <MegaMenuDropdown key={item.label} item={item} />
+                </li>
               ))}
               {joinNavItem && (
                 <li>
                   <Link
                     href={joinNavItem.href}
-                    className="bg-muted text-foreground font-medium py-3 px-6 rounded-full hover:bg-accent transition-colors"
+                    className="bg-sky-50 text-foreground font-medium py-3 px-6 rounded-full hover:bg-accent transition-colors"
                   >
                     {joinNavItem.label} &rarr;
                   </Link>
