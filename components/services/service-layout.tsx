@@ -17,9 +17,9 @@ const ServiceLayout: React.FC<ServiceLayoutProps> = ({ post, categorySlug, child
   return (
     <article className="bg-background text-foreground">
       {/* Section 1: Service Hero */}
-      <header className="py-24 px-6 text-center bg-muted">
+      <header className="pt-12 pb-8 md:pt-24 md:pb-16 px-6 md:text-center bg-muted">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-serif leading-tight mb-4">{post.title}</h1>
+          <h1 className="text-3xl md:text-5xl font-serif leading-tight mb-4">{post.title}</h1>
           <p className="text-lg text-foreground/80 max-w-2xl mx-auto">{post.summary}</p>
           {post.coverImage && (
             <div className="relative mt-12 w-full max-w-5xl mx-auto h-[200px] md:h-[300px] overflow-hidden rounded-xl">
