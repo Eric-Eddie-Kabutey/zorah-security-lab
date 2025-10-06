@@ -37,7 +37,7 @@ const Newsletter: React.FC = () => {
   };
 
   return (
-    <section className="bg-[#e0eedc] text-foreground/90">
+    <section className="bg-[#dfedcd] text-foreground/90">
       <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-5 items-center gap-8 md:gap-16">
           {/* Column 1: Title */}

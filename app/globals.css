@@ -3,7 +3,7 @@
 
 /* Define CSS variables for the light theme ONLY */
 :root {
-  --background: 255 255 255; /* White as HSL/RGB values */
+  --background: #f7f8f5; /* White as HSL/RGB values */
   --foreground: 23 23 23;   /* #171717 as HSL/RGB values */
   
   /* Additional colors from your design */
@@ -15,4 +15,8 @@
 body {
 background: var(--background);
 color: var(--foreground);
+}
+
+.email-cta-bg {
+  background-color: #dfedcd;
 }
