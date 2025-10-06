@@ -28,16 +28,16 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
           {/* Card Content */}
           <div className="flex flex-col flex-grow">           
 
-            <h3 className="text-xl font-medium text-foreground mb-4 flex-grow">
+            <h3 className="text-xl font-medium text-foreground mt-2 mb-6 flex-grow">
               {publication.title}
             </h3>
 
-            <div className="text-sm">
+            <div className="text-sm my-2">
               <span className="text-foreground/60">In collaboration with</span>
               <p className="font-bold text-foreground mt-1">{publication.partner}</p>
             </div>
             
-            <div className="mt-4 text-sm font-medium text-foreground/80 flex items-center gap-2 group-hover:text-foreground">
+            <div className="mt-6 mb-4 text-sm font-medium text-foreground/80 flex items-center gap-2 group-hover:text-foreground">
               Read more
               <span className="transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
             </div>
