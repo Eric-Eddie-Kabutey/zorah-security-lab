@@ -23,7 +23,7 @@ const MainHeader = () => {
   return (
     <>
       <header className="sticky top-0 z-40 w-full bg-background/80 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+        <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 h-20 flex justify-between items-center">
           <Logo />
 
           {/* DYNAMIC DESKTOP NAVIGATION */}
@@ -49,7 +49,10 @@ const MainHeader = () => {
           
           {/* ... mobile menu toggle ... */}
           <div className="md:hidden">
-            <button onClick={() => setIsMenuOpen(true)} aria-label="Open menu">...</button>
+            <button onClick={() => setIsMenuOpen(true)} aria-label="Open menu" className='flex flex-col gap-y-1'>
+             <span className="block w-6 h-0.5 bg-black"></span> 
+            <span className="block w-6 h-0.5 bg-black"></span>
+            </button>
           </div>
         </div>
       </header>
