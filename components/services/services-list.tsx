@@ -25,8 +25,7 @@ const ServicesList: React.FC<ServicesListProps> = ({ services, categorySlug }) =
       viewport={{ once: true, amount: 0.1 }}
       variants={gridContainerVariants}
     >
-      {services.map(service => (
-        // The ServiceCard component already contains a motion.div, so it will be animated as a child
+      {services.map(service => (        
         <ServiceCard
           key={service.slug}
           service={service}
