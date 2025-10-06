@@ -2,7 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ServiceFrontmatter } from '@/types';
-import TableOfContents from '@/components/post/table-of-content';
 
 interface ServiceLayoutProps {
     post: ServiceFrontmatter;
@@ -37,13 +36,15 @@ const ServiceLayout: React.FC<ServiceLayoutProps> = ({ post, categorySlug, child
 
       {/* Section 2: Main Content Grid */}
       <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 py-5 grid grid-cols-1 lg:grid-cols-5 gap-x-4 lg:gap-x-12">
-        {/* Left Column: Table of Contents */}
+        {/* Left Column: Options */}
         <aside className="hidden md:block md:col-span-2">
           <div className="sticky top-28">
             <h3 className="text-sm md:text-lg font-medium tracking-widest text-foreground/70 mb-4">
-        In this document
-      </h3>
-            <TableOfContents />
+        See pass projects
+      </h3>            
+            <Link href='/gallery' className="text-sm font-medium tracking-widest text-foreground/70 hover:text-foreground">
+              See more &rarr;
+            </Link>
           </div>
         </aside>
 
