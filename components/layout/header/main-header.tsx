@@ -38,7 +38,7 @@ const MainHeader = () => {
                 <li>
                   <Link
                     href={joinNavItem.href}
-                    className="bg-sky-50 text-foreground font-medium py-3 px-6 rounded-full hover:bg-accent transition-colors"
+                    className="bg-[#f0f0f0] text-foreground font-medium py-3 px-6 rounded-full hover:bg-accent transition-colors"
                   >
                     {joinNavItem.label} &rarr;
                   </Link>
