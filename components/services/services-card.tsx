@@ -33,7 +33,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, categorySlug }) => {
           </div>
         )}
     
-        <div className="flex flex-col flex-grow">
+        <div className="flex flex-col flex-grow mt-4">
           <div>
             <h3 className="text-2xl font-semibold text-foreground mb-3">{service.title}</h3>
             <p className="text-foreground/70">{service.summary}</p>
