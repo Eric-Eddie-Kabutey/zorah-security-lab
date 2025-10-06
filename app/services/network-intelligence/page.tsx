@@ -31,10 +31,7 @@ export default async function CyberEnableCrimeForensicsPage() {
              and the category slug as props.
         */}
         <ServicesList services={services} categorySlug={categorySlug} />
-      </section>
-
-      {/* services grid section */}
-      <ServicesGrid />
+      </section>     
 
       {/* Newsletter section */}
       <Newsletter />
