@@ -3,6 +3,7 @@ import ServicesList from '@/components/services/services-list';
 import { getServicesByCategory } from '@/lib/mdx';
 import React from 'react';
 import Newsletter from '@/components/shared/news-letter';
+import ActionButton from '@/components/shared/action-button';
 
 export default async function DigitalForensicsPage() {
   // Define the specific category for this page
@@ -11,6 +12,8 @@ export default async function DigitalForensicsPage() {
 
   // Fetch only the services that belong to this category
   const services = getServicesByCategory(categorySlug);
+
+  const label = "See Gallery";
 
   return (
     <>
@@ -29,7 +32,14 @@ export default async function DigitalForensicsPage() {
              and the category slug as props.
         */}
         <ServicesList services={services} categorySlug={categorySlug} />
-      </section>      
+      </section>     
+      
+      {/* see gallery btn */}
+      <div className='max-w-[1230px] 2xl:max-w-[1390px] mx-auto flex items-center justify-center px-6 pb-10 md:pb-18'>
+       <ActionButton href="/gallery" className='bg-[#f0f0f0] py-2 px-16 rounded-full text-black text-xl w-2xl md:max-w-[376px] text-center mx-auto  font-medium'>
+              {label}
+            </ActionButton>
+      </div>
 
       {/* Newsletter section */}
       <Newsletter />

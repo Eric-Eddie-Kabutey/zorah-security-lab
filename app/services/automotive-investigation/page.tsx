@@ -35,7 +35,7 @@ export default async function CyberEnableCrimeForensicsPage() {
 
       {/* see gallery btn */}
       <div className='max-w-[1230px] 2xl:max-w-[1390px] mx-auto flex items-center justify-center px-6 pb-10 md:pb-18'>
-       <ActionButton href="/gallery" className='bg-sky-50 py-2 px-16 rounded-full text-black text-xl w-2xl md:max-w-[376px] text-center mx-auto  font-medium'>
+       <ActionButton href="/gallery" className='bg-[#f0f0f0] py-2 px-16 rounded-full text-black text-xl w-2xl md:max-w-[376px] text-center mx-auto  font-medium'>
               {label}
             </ActionButton>
       </div>
