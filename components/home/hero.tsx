@@ -30,17 +30,25 @@ const Hero: React.FC = () => {
   const currentPartnerSet = partnerSets[partnerIndex];
 
   return (
-    <section className="min-h[95vh] lg:min-h-screen flex flex-col items-center justify-center text-center bg-background px-6 pt-18 md:py-24">
+    <section className="min-h[95vh] lg:min-h-screen flex flex-col items-center justify-center text-center bg-background px-6  py-14 sm:py-16 lg:py-24 2xl:py-18">
       <div className=" max-w-3xl mx-auto">
         {/* Main Heading */}
-        <h1 className="text-4xl  mg:text-5xl md:text-7xl font-serif text-black font-medium leading-tight">
-          Digital Forensics & Business Security 
-        </h1>
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }} 
+          className="text-4xl  mg:text-5xl md:text-7xl font-serif text-black font-medium leading-tight">
+          Digital Forensics Business Security 
+        </motion.h1>
 
         {/* Subheading */}
-        <p className="mt-4 max-w-[476px] mx-auto text-lg text-black font-medium leading-relaxed">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }} 
+          className="mt-4 max-w-[476px] mx-auto text-base lg:text-base text-black font-medium leading-relaxed">
           Zorah Security Lab is the first integrated partner dedicated to securing Critical Governmenet and Business Digital Integrity, critical infrastructure and assets by unifying cyber defence, digital forensics, investigations and physical asset recovery under one command.
-        </p>
+        </motion.p>
       </div>
 
       {/* Animated Partner Logos Section */}
