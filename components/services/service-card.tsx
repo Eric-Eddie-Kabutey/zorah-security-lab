@@ -1,6 +1,6 @@
 "use client";
 
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { motion, Variants } from 'framer-motion';
 
 // The animation variant for each card
@@ -10,7 +10,7 @@ export const cardVariants: Variants = {
 };
 
 interface ServiceCardProps {
-  imageUrl: string;
+  imageUrl: string | StaticImageData;
   altText: string;
   title: string;
 }
