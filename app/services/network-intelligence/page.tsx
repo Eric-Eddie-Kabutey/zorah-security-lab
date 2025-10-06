@@ -2,8 +2,6 @@ import PageHeader from '@/components/shared/page-header';
 import ServicesList from '@/components/services/services-list';
 import { getServicesByCategory } from '@/lib/mdx';
 import Newsletter from '@/components/shared/news-letter';
-import ServicesListing from '@/components/services/services-listing';
-import ServicesGrid from '@/components/services/service-grid';
 
 
 export default async function CyberEnableCrimeForensicsPage() {

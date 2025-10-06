@@ -2,7 +2,7 @@ import PageHeader from '@/components/shared/page-header';
 import ServicesList from '@/components/services/services-list';
 import { getServicesByCategory } from '@/lib/mdx';
 import Newsletter from '@/components/shared/news-letter';
-import ServicesGrid from '@/components/services/service-grid';
+import ActionButton from '@/components/shared/action-button';
 
 export default async function CyberEnableCrimeForensicsPage() {
   // Define the specific category for this page
@@ -11,6 +11,8 @@ export default async function CyberEnableCrimeForensicsPage() {
 
   // Fetch only the services that belong to this category
   const services = getServicesByCategory(categorySlug);
+
+  const label = "See Gallery";
 
   return (
     <>
@@ -30,6 +32,13 @@ export default async function CyberEnableCrimeForensicsPage() {
         */}
         <ServicesList services={services} categorySlug={categorySlug} />
       </section>      
+
+      {/* see gallery btn */}
+      <div className='max-w-[1230px] 2xl:max-w-[1390px] mx-auto flex items-center justify-center px-6 pb-10 md:pb-18'>
+       <ActionButton href="/gallery" className='bg-sky-50 py-2 px-16 rounded-full text-black text-xl w-2xl md:max-w-[376px] text-center mx-auto  font-medium'>
+              {label}
+            </ActionButton>
+      </div>
 
       {/* Newsletter section */}
         <Newsletter />

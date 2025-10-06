@@ -3,7 +3,6 @@ import ServicesList from '@/components/services/services-list';
 import { getServicesByCategory } from '@/lib/mdx';
 import React from 'react';
 import Newsletter from '@/components/shared/news-letter';
-import ServicesGrid from '@/components/services/service-grid';
 
 export default async function CyberEnableCrimeForensicsPage() {
   // Define the specific category for this page
