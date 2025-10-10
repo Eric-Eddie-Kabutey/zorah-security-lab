@@ -41,7 +41,7 @@ const PublicationsList: React.FC<PublicationsListProps> = ({
 
 				<motion.div layout>
 					<AnimatePresence initial={false}>
-						{filteredPublications.map((publication) => (
+						{filteredPublications.length > 0 ? filteredPublications.map((publication) => (
 							<motion.div
 								key={publication.slug}
 								layout
@@ -51,7 +51,7 @@ const PublicationsList: React.FC<PublicationsListProps> = ({
 								exit='exit'>
 								<PublicationListItem publication={publication} />
 							</motion.div>
-						))}
+						)) : <p className='text-sm md:text-lg mb-6'>No publications found.</p>}
 					</AnimatePresence>
 				</motion.div>
 			</div>

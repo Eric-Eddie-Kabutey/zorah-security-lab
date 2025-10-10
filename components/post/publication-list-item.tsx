@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { PublicationFrontmatter } from '@/types';
 import { format } from 'date-fns';
-import { motion } from 'framer-motion';
 
 // Placeholder icon for research items
 const AbstractIcon = () => (
