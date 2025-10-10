@@ -33,8 +33,7 @@ const PublicationCard: React.FC<PublicationCardProps> = ({ publication }) => {
             </h3>
 
             <div className="text-sm my-2">
-              <span className="text-foreground/60">In collaboration with</span>
-              <p className="font-bold text-foreground mt-1">{publication.partner}</p>
+              <p className="font-medium text-foreground mt-1">{publication.description}</p>
             </div>
             
             <div className="mt-6 mb-4 text-sm font-medium text-foreground/80 flex items-center gap-2 group-hover:text-foreground">
