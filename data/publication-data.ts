@@ -11,24 +11,24 @@ export interface Publication {
 export const allPublications: Publication[] = [
     {
         id: 1,
-        title: "Irregular x OpenAI: Evaluating GPT-5's Cybersecurity Capabilities",
+        title: "Track Lost Phones",
         partner: "OpenAI",
         href: "/publications/gpt-5-cybersecurity",
-        coverImage: "/assets/images/cover-img.jpg",
+        coverImage: "/assets/images/publications/track-lost-phone.webp",
     },
     {
         id: 2,
-        title: "From Scripts to Strategy: Claude 4's Advanced Approach to Offensive Security",
+        title: "Track Lost Cars",
         partner: "Anthropic",
         href: "/publications/claude-4-offensive-security",
-        coverImage: "/assets/images/cover-img.jpg",
+        coverImage: "/assets/images/publications/track-lost-car.webp",
     },
     {
         id: 3,
-        title: "Irregular and Anthropic Publish Whitepaper on Confidential AI Inference Systems",
+        title: "Uncover Individual Identity",
         partner: "Anthropic",
         href: "/publications/confidential-ai-inference",
-        coverImage: "/assets/images/cover-img.jpg",
+        coverImage: "/assets/images/publications/uncover-individual-identity.webp",
     },
     // Duplicate data for the "View All" functionality
     {
