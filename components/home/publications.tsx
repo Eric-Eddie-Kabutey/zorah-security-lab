@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { motion,AnimatePresence, Variants } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { allPublications } from '@/data/publication-data'
 import PublicationCard from './publication-card';
 ;
@@ -25,20 +25,20 @@ const itemVariants: Variants = {
 };
 
 
-const Publications: React.FC = () => {   
+const Publications: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
-  
+
   const toggleView = () => {
     setIsExpanded(prevState => !prevState);
   };
 
   const visibleCount = isExpanded ? allPublications.length : INITIAL_VISIBLE_COUNT;
   const visiblePublications = allPublications.slice(0, visibleCount);
-  const buttonText = isExpanded ? 'VIEW LESS' : 'VIEW ALL';  
-  
+  const buttonText = isExpanded ? 'VIEW LESS' : 'VIEW ALL';
+
 
   return (
-        <section className="bg-background py-24 px-6">
+    <section className="bg-background py-24 px-6">
       <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6">
         {/* Section Header */}
         <div className="flex justify-between items-center mb-12">
@@ -57,6 +57,9 @@ const Publications: React.FC = () => {
         {/* Publications Grid */}
         <motion.div
           className=""
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
           {/* 4. WRAP THE MAPPED ITEMS IN AnimatePresence */}
           <AnimatePresence>

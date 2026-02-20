@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { AnimatePresence } from 'framer-motion';
-import MobileMenu from './mobile-menu'; 
+import MobileMenu from './mobile-menu';
 import Logo from '@/components/logo/brand-logo';
 import MegaMenuDropdown from './menu-dropdown';
 
@@ -30,9 +30,7 @@ const MainHeader = () => {
           <nav className="hidden lg:block">
             <ul className="flex items-center gap-8">
               {mainNavItems.map((item) => (
-                <li key={item.label}>
-                  <MegaMenuDropdown key={item.label} item={item} />
-                </li>
+                <MegaMenuDropdown key={item.label} item={item} />
               ))}
               {joinNavItem && (
                 <li>
@@ -46,12 +44,12 @@ const MainHeader = () => {
               )}
             </ul>
           </nav>
-          
+
           {/* ... mobile menu toggle ... */}
           <div className="lg:hidden">
             <button onClick={() => setIsMenuOpen(true)} aria-label="Open menu" className='flex flex-col gap-y-1'>
-             <span className="block w-6 h-0.5 bg-black"></span> 
-            <span className="block w-6 h-0.5 bg-black"></span>
+              <span className="block w-6 h-0.5 bg-black"></span>
+              <span className="block w-6 h-0.5 bg-black"></span>
             </button>
           </div>
         </div>

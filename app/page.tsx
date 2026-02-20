@@ -3,13 +3,12 @@ import Contact from "@/components/home/contact";
 import Hero from "@/components/home/hero";
 import Publications from "@/components/home/publications";
 import FeaturedRolesSection from "@/components/home/roles/featured-roles";
-import Divider from "@/components/shared/divider";
 import Newsletter from "@/components/shared/news-letter";
 import WaveDivider2 from "@/components/svg/wave-divider2";
 
 export default function Home() {
   return (<>
-    {/* Hero section */}   
+    {/* Hero section */}
     <Hero />
 
     {/* Divider section */}
@@ -21,7 +20,7 @@ export default function Home() {
 
     {/* Divider section */}
     {/* <Divider /> */}
-    
+
     {/* FeaturedRoles section */}
     {/* <FeaturedRoles /> */}
     <FeaturedRolesSection visible={true} />
@@ -33,6 +32,6 @@ export default function Home() {
 
     {/* Newsletter section */}
     <Newsletter />
-    
+
   </>);
 }

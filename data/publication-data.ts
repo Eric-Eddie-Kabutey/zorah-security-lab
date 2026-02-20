@@ -15,7 +15,7 @@ export const allPublications: Publication[] = [
         title: "Track Lost Phones",
         partner: "OpenAI",
         href: "/publications/gpt-5-cybersecurity",
-        coverImage: "/assets/images/publications/track-lost-phone.webp",
+        coverImage: "/assets/images/publications/phone.jpeg",
         description: "Using GPT-5 to enhance cybersecurity measures and protect against emerging threats."
     },
     {
@@ -23,7 +23,7 @@ export const allPublications: Publication[] = [
         title: "Track Lost Cars",
         partner: "Anthropic",
         href: "/publications/claude-4-offensive-security",
-        coverImage: "/assets/images/publications/track-lost-car.webp",
+        coverImage: "/assets/images/publications/car.jpeg",
         description: "Leveraging Claude 4 for advanced offensive security strategies in modern cyber defense."
     },
     {
@@ -31,7 +31,7 @@ export const allPublications: Publication[] = [
         title: "Uncover Individual Identity",
         partner: "Anthropic",
         href: "/publications/confidential-ai-inference",
-        coverImage: "/assets/images/publications/uncover-individual-identity.webp",
+        coverImage: "/assets/images/publications/face.jpeg",
         description: "Exploring confidential AI inference techniques to safeguard individual identities in data processing."
     },
     // Duplicate data for the "View All" functionality

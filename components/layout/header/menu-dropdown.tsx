@@ -29,7 +29,7 @@ const MenuDropdown: React.FC<{ item: NavItem }> = ({ item }) => {
   };
 
   return (
-    <div
+    <li
       className="relative"
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
@@ -87,7 +87,7 @@ const MenuDropdown: React.FC<{ item: NavItem }> = ({ item }) => {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </li>
   );
 };
 

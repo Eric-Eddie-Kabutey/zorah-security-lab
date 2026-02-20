@@ -13,7 +13,6 @@ import {
 import { Shield, Scan, Fingerprint, Lock } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { Spotlight } from "@/components/ui/spotlight-new";
 
 const partnerSets = [
   {
@@ -63,37 +62,83 @@ const InfoBlock = ({
 }: {
   block: (typeof SECURITY_BLOCKS)[0];
   className?: string;
-}) => (
-  <motion.h1
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-  >
-    <div className={cn("hero-info-container", block.color, className)}>
-      <div className="flex flex-row justify-between items-start gap-2">
-        <span className="text-sm leading-2 font-bold text-gray-900">{block.id}</span>
-        <div className="w-12 h-12 flex items-center justify-center">
-          <block.icon
+}) => {
+  const isDark = block.color === "bg-gray-700" || block.color === "bg-gray-400";
+
+  return (
+    <motion.h1
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <div
+        className={cn(
+          "hero-info-container",
+          className,
+          "relative overflow-hidden rounded-2xl p-6",
+          block.color,
+          "backdrop-blur-xl",
+        )}
+      >
+        {/* glass overlay layer */}
+        <div
+          className={cn(
+            "pointer-events-none absolute inset-0",
+          )}
+        />
+
+        {/* subtle border (looks like glass edge) */}
+        <div
+          className={cn(
+            "pointer-events-none absolute inset-0 rounded-2xl",
+          )}
+        />
+
+        {/* optional glow blobs */}
+        <div className="pointer-events-none absolute inset-0">
+          <div
             className={cn(
-              "w-10 h-10",
-              block.color === "bg-gray-700" ? "text-gray-100" : "text-gray-900"
+              "absolute -top-24 -left-24 h-56 w-56 rounded-full blur-3xl",
+              isDark ? "bg-white/10" : "bg-white/20"
+            )}
+          />
+          <div
+            className={cn(
+              "absolute -bottom-24 -right-24 h-56 w-56 rounded-full blur-3xl",
+              isDark ? "bg-white/10" : "bg-white/20"
             )}
           />
         </div>
+
+        {/* content */}
+        <div className="relative z-10">
+          <div className="flex flex-row justify-between items-start gap-2">
+            <span
+              className={cn(
+                "text-4xl leading-none font-bold",
+                isDark ? "text-white/50" : "text-gray-900/50"
+              )}
+            >
+              {block.id}
+            </span>
+          </div>
+
+          <div className="mt-4">
+            <p
+              className={cn(
+                "text-md font-normal capitalize",
+                isDark ? "text-gray-100" : "text-gray-900"
+              )}
+            >
+              {block.title}
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="mt-4">
-        <p
-          className={cn(
-            "text-md font-normal capitalize",
-            block.color === "bg-gray-700" ? "text-gray-100" : "text-gray-900"
-          )}
-        >
-          {block.title}
-        </p>
-      </div>
-    </div>
-  </motion.h1>
-);
+    </motion.h1>
+  );
+};
+
 
 const Hero: React.FC = () => {
   const [partnerIndex, setPartnerIndex] = useState(0);
@@ -112,7 +157,7 @@ const Hero: React.FC = () => {
   const currentPartnerSet = partnerSets[partnerIndex];
 
   return (
-    <section className="relative bg-white max-w-[1230px] 2xl:max-w-[1390px] mx-auto h-auto flex flex-col-reverse md:flex-col items-start justify-start text-left px-6 ">
+    <section className="relative bg-white max-w-[1230px] 2xl:max-w-[1390px] mx-auto h-auto flex flex-col-reverse md:flex-col items-start justify-start text-left px-6 overflow-hidden">
 
       {/* <Spotlight
         gradientFirst="radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(210, 100%, 85%, .15) 0, hsla(210, 100%, 55%, .05) 50%, hsla(210, 100%, 45%, 0) 80%)"
@@ -124,7 +169,7 @@ const Hero: React.FC = () => {
         xOffset={100}
       /> */}
       {/* Responsive Info Blocks Section */}
-      <div className="w-full mt-14 md:mt-20 mb-10 md:mb-20 z-20">
+      <div className="w-full mt-4 md:mt-20 mb-10 md:mb-20 z-10">
         {/* Mobile Carousel*/}
         <div className="md:hidden overflow-hidden" ref={emblaRef}>
           <div className="flex">
@@ -137,7 +182,7 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Desktop Grid  */}
-        <div className="hidden md:grid grid-cols-3 grid-rows-2 gap-1">
+        <div className="hidden md:grid grid-cols-3 grid-rows-2 gap-2">
           <div className="hero-info-container bg-transparent"></div>
           <InfoBlock block={SECURITY_BLOCKS[0]} />
           <InfoBlock block={SECURITY_BLOCKS[1]} />
@@ -151,8 +196,8 @@ const Hero: React.FC = () => {
         className={cn(
           "absolute inset-0",
           "[background-size:20px_20px]",
-          "[background-image:radial-gradient(#d4d4d4_1px,transparent_1px)]",
-          "dark:[background-image:radial-gradient(#404040_1px,transparent_1px)]",
+          "[background-image:radial-gradient(#d4d4d4_1px,transparent_2px)]",
+          "dark:[background-image:radial-gradient(#404040_1px,transparent_3px)]",
         )}
       />
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent,black)] dark:bg-[#F7F8F5]"></div>
@@ -164,14 +209,14 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="text-6xl mg:text-5xl md:text-7xl font-mono text-gray-900 font-bold leading-14 uppercase">
+            className="text-4xl mg:text-5xl md:text-7xl font-mono text-gray-900 font-bold md:leading-20 uppercase">
             Digital Forensics
           </motion.h1>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="text-6xl mg:text-5xl md:text-7xl font-mono text-gray-900/80 font-bold leading-14 uppercase">
+            className="text-4xl mg:text-5xl md:text-7xl font-mono text-gray-900/80 font-bold md:leading-20 uppercase">
             Business Security
           </motion.h1>
 
@@ -186,7 +231,7 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Animated Partner Logos Section */}
-        <div className="pt-10  w-full">
+        <div className="py-10  w-full">
           <AnimatePresence mode="wait">
             <motion.div
               key={partnerIndex}

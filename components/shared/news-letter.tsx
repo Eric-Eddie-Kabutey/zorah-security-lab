@@ -29,7 +29,7 @@ const Newsletter: React.FC = () => {
       // --- END FAKE API CALL ---
 
       setStatus('success');
-      // We don't reset the form immediately, we show a success message instead.
+      reset();
     } catch (error) {
       console.error('Subscription failed:', error);
       setStatus('error');
@@ -80,7 +80,7 @@ const Newsletter: React.FC = () => {
                 {errors.email && (
                   <p className="mt-2 text-sm text-red-600">{errors.email.message}</p>
                 )}
-                 {status === 'error' && (
+                {status === 'error' && (
                   <p className="mt-2 text-sm text-red-600">Something went wrong. Please try again.</p>
                 )}
               </form>
