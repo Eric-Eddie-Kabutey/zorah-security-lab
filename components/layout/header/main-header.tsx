@@ -27,7 +27,7 @@ const MainHeader = () => {
           <Logo />
 
           {/* DYNAMIC DESKTOP NAVIGATION */}
-          <nav className="hidden md:block">
+          <nav className="hidden lg:block">
             <ul className="flex items-center gap-8">
               {mainNavItems.map((item) => (
                 <li key={item.label}>
@@ -38,7 +38,7 @@ const MainHeader = () => {
                 <li>
                   <Link
                     href={joinNavItem.href}
-                    className="bg-[#f0f0f0] text-foreground font-medium py-3 px-6 rounded-full hover:bg-accent transition-colors"
+                    className="border border-[#464646] text-foreground font-medium rounded-[10px] py-3 px-6 hover:bg-accent transition-colors"
                   >
                     {joinNavItem.label} &rarr;
                   </Link>
@@ -48,7 +48,7 @@ const MainHeader = () => {
           </nav>
           
           {/* ... mobile menu toggle ... */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button onClick={() => setIsMenuOpen(true)} aria-label="Open menu" className='flex flex-col gap-y-1'>
              <span className="block w-6 h-0.5 bg-black"></span> 
             <span className="block w-6 h-0.5 bg-black"></span>

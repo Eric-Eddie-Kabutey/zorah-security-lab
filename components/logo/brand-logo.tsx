@@ -3,7 +3,7 @@ import React from 'react';
 
 const BrandLogo: React.FC = () => (
   <Link href='/' className='flex items-center gap-2 text-brand-text'>
-		<span className='lg:text-xl font-bold tracking-tight uppercase'>Zorah Security Lab</span>
+		<span className='lg:text-xl font-mono font-bold tracking-tight uppercase'>Zorah Security Lab</span>
 		<svg
 			width='20'
 			height='18'

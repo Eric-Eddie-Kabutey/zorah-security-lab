@@ -42,7 +42,7 @@ const Publications: React.FC = () => {
       <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6">
         {/* Section Header */}
         <div className="flex justify-between items-center mb-12">
-          <h2 className="text-lg font-medium text-foreground">Latest Publications</h2>
+          <h2 className="text-lg font-mono font-bold uppercase text-foreground">Services</h2>
           {/* Button is always visible if there are more items to show/hide */}
           {allPublications.length > INITIAL_VISIBLE_COUNT && (
             <button
@@ -56,7 +56,7 @@ const Publications: React.FC = () => {
 
         {/* Publications Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className=""
         >
           {/* 4. WRAP THE MAPPED ITEMS IN AnimatePresence */}
           <AnimatePresence>
