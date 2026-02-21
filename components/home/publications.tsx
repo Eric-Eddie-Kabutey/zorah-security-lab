@@ -42,7 +42,7 @@ const Publications: React.FC = () => {
       <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6">
         {/* Section Header */}
         <div className="flex justify-between items-center mb-12">
-          <h2 className="text-lg font-mono font-bold uppercase text-foreground">Services</h2>
+          <h2 className="text-lg font-mono font-bold uppercase text-foreground">publications</h2>
           {/* Button is always visible if there are more items to show/hide */}
           {allPublications.length > INITIAL_VISIBLE_COUNT && (
             <button

@@ -3,39 +3,43 @@ import { NavItem } from '@/types/nav-types'
 export const navigationItems: NavItem[] = [
     {
         label: 'Publications',
-        href: '/publications',       
+        href: '/publications',
     },
     {
         label: 'About',
-        href: '/about',               
-    }, 
+        href: '/about',
+    },
     {
         label: 'Services',
         href: '#',
         dropdownMenuContent: [
             {
-                title: 'Digital Forensics',    
+                title: 'Digital Forensics',
                 href: '/services/digital-forensics',
                 description: 'Some description coming some for digital forensics',
-                iconUrl: '/assets/icons/digital-forensics/link-icon.png'
+                iconUrl: '/assets/icons/digital-forensics/link-icon.png',
+                imageUrl: '/assets/images/services/digital-forensics/computer-forensics-cover-img.avif'
             },
             {
-                title: 'Cyber Enable Crime',  
+                title: 'Cyber Enable Crime',
                 href: '/services/cyber-enable-crime',
-                description: 'Some description coming some for cyber enable crime',   
-                iconUrl: '/assets/icons/cyber-enable-crime/link-icon.png'
-            },            
+                description: 'Some description coming some for cyber enable crime',
+                iconUrl: '/assets/icons/cyber-enable-crime/link-icon.png',
+                imageUrl: '/assets/images/services/cyber-enable-crime/bce-investigation-cover-img.avif'
+            },
             {
-                title: 'Network Intelligence',     
+                title: 'Network Intelligence',
                 href: '/services/network-intelligence',
                 description: 'Some description coming some for network intelligence',
-                iconUrl: '/assets/icons/network-intelligence/link-icon.png'
+                iconUrl: '/assets/icons/network-intelligence/link-icon.png',
+                imageUrl: '/assets/images/services/network-intelligence/ethical-hacking-team-cover-img.jpg'
             },
             {
                 title: 'Automotive Investigation',
                 href: '/services/automotive-investigation',
                 description: 'Some description coming some for automotive investigation',
-                iconUrl: '/assets/icons/automotive-investigation/link-icon.png'
+                iconUrl: '/assets/icons/automotive-investigation/link-icon.png',
+                imageUrl: '/assets/images/services/automotive-investigation/oem-telematics-cover-img.avif'
             },
         ],
     },
@@ -45,7 +49,7 @@ export const navigationItems: NavItem[] = [
     },
     {
         label: 'Contact',
-        href: '/contact',    
+        href: '/contact',
     },
     {
         label: 'Join our team',

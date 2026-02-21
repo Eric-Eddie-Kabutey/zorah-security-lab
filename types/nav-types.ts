@@ -3,7 +3,8 @@ export interface DropdownMenuItem {
     title: string;
     description: string;
     href: string;
-    iconUrl: string | StaticImageData; 
+    iconUrl: string | StaticImageData;
+    imageUrl?: string | StaticImageData;
 }
 
 export type NavItem = {
