@@ -5,30 +5,11 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { newsletterFormSchema, NewsletterFormValues } from '@/lib/validators'; // Adjust path
 
-import { Shield, Scan, Command, Search, Lock, Database } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 type SubmissionStatus = 'idle' | 'submitting' | 'success' | 'error';
 
-const OrbitingIcon = ({ icon: Icon, radius, duration, delay, reverse = false }: { icon: any, radius: string, duration: number, delay: number, reverse?: boolean }) => (
-  <motion.div
-    animate={{ rotate: reverse ? -360 : 360 }}
-    transition={{ duration, repeat: Infinity, ease: "linear", delay }}
-    style={{ width: radius }}
-    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none aspect-square"
-  >
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-      <motion.div
-        animate={{ rotate: reverse ? 360 : -360 }}
-        transition={{ duration, repeat: Infinity, ease: "linear", delay }}
-        className='p-2 backdrop-blur-md bg-white/5 rounded-full'
-      >
-        <Icon className="w-8 h-8 text-gray-600 stroke-[1]" />
-      </motion.div>
-    </div>
-  </motion.div>
-);
 
 const RadarBlip = ({ top, left, delay }: { top: string, left: string, delay: number }) => (
   <motion.div
@@ -175,18 +156,6 @@ const Newsletter: React.FC = () => {
         </div>
 
 
-        {/* Orbiting Icons distributed across all three circles */}
-        {/* Outer Circle (45%) */}
-        {/* <OrbitingIcon icon={Shield} radius="45%" duration={30} delay={0} />
-        <OrbitingIcon icon={Search} radius="45%" duration={30} delay={-15} reverse /> */}
-
-        {/* Middle Circle (32%) */}
-        {/* <OrbitingIcon icon={Scan} radius="32%" duration={25} delay={-5} />
-        <OrbitingIcon icon={Search} radius="32%" duration={25} delay={-17} reverse /> */}
-
-        {/* Inner Circle (22%) */}
-        {/* <OrbitingIcon icon={Scan} radius="22%" duration={20} delay={-2} />
-        <OrbitingIcon icon={Shield} radius="22%" duration={20} delay={-12} reverse /> */}
 
         <div className='absolute inset-0 z-10 bg-gradient-to-b from-transparent via-white to-white'></div>
 

@@ -22,11 +22,11 @@ interface AnimatedBlockProps {
   children: React.ReactNode;
   className?: string;
   as?: keyof typeof motion;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 const AnimatedBlock: React.FC<AnimatedBlockProps> = ({ children, className, as = 'div', ...props }) => {
-  const Component = motion[as] as any;
+  const Component = motion[as] as React.ElementType;
 
   return (
     <Component
