@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
@@ -21,19 +21,24 @@ const animationVariants: Variants = {
 interface AnimatedBlockProps {
   children: React.ReactNode;
   className?: string;
+  as?: keyof typeof motion;
+  [key: string]: any;
 }
 
-const AnimatedBlock: React.FC<AnimatedBlockProps> = ({ children, className }) => {
+const AnimatedBlock: React.FC<AnimatedBlockProps> = ({ children, className, as = 'div', ...props }) => {
+  const Component = motion[as] as any;
+
   return (
-    <motion.div
+    <Component
       variants={animationVariants}
       initial="hidden"
-      whileInView="visible"      
-      viewport={{ once: true, amount: 0.1 }} 
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
       className={className}
+      {...props}
     >
       {children}
-    </motion.div>
+    </Component>
   );
 };
 
