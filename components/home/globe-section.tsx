@@ -2,24 +2,56 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import InteractiveMap from "@/components/svg/interactive-map";
+import InteractiveMap, { MAP_REGIONS } from "@/components/svg/interactive-map";
+
+const HIGHLIGHTED_IDS = ["c154", "c50", "c100", "c150", "c199", "c184"];
 
 const GlobeSection: React.FC = () => {
+    const [currentIndex, setCurrentIndex] = React.useState(0);
+    const [isZoomingOut, setIsZoomingOut] = React.useState(false);
+
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            setIsZoomingOut((prev) => {
+                if (prev) {
+                    // We were zoomed out (world view), now move to next ID and zoom in
+                    setCurrentIndex((idx) => (idx + 1) % HIGHLIGHTED_IDS.length);
+                    return false;
+                } else {
+                    // We were zoomed in, now zoom out to world view
+                    return true;
+                }
+            });
+        }, 8000); // 8 seconds per "beat" for a calm, slow pulse
+        return () => clearInterval(interval);
+    }, []);
+
+    const activeId = isZoomingOut ? undefined : HIGHLIGHTED_IDS[currentIndex];
+
     return (
-        <section className="w-full min-h-screen py-24 bg-white flex flex-col items-center justify-center overflow-hidden">
-            <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 w-full flex flex-col items-center">
-                <motion.h2
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
-                    className="text-4xl md:text-6xl font-bold text-gray-900 mb-12 text-center"
+        <section className="relative w-full h-[calc(100vh-80px)] max-h-[900px] min-h-[600px] bg-white flex flex-col items-center justify-center overflow-hidden">
+            <div className="absolute top-12 left-0 right-0 z-10 pointer-events-none w-full flex flex-col items-center">
+                <motion.div
+                    key={activeId || "global"}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1 }}
+                    className="text-center"
                 >
-                    Global Security Presence
-                </motion.h2>
+                    <h2 className="text-3xl md:text-5xl font-bold text-gray-900">
+                        {!activeId ? "Global Network Connectivity" : "Localized Security Focus"}
+                    </h2>
+                    <p className="text-gray-500 mt-2 font-mono text-xs md:text-sm">
+                        {!activeId ? "Overview of active operations" : `Active Highlight: ${activeId}`}
+                    </p>
+                </motion.div>
+            </div>
+
+            <div className="w-full h-full">
                 <InteractiveMap
-                    className="w-full aspect-[1010/666] max-h-[70vh]"
-                    highlightedIds={["c14", "c52", "c91", "c180"]}
+                    className="w-full h-full"
+                    highlightedIds={HIGHLIGHTED_IDS}
+                    focalId={activeId}
                 />
             </div>
         </section>
