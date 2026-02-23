@@ -6,6 +6,7 @@ import Publications from "@/components/home/publications";
 import FeaturedRolesSection from "@/components/home/roles/featured-roles";
 import Newsletter from "@/components/shared/news-letter";
 import WaveDivider2 from "@/components/svg/wave-divider2";
+import GlobeSection from "@/components/home/globe-section";
 
 export default function Home() {
   return (<>
@@ -15,6 +16,9 @@ export default function Home() {
     {/* Divider section */}
     {/* <Divider /> */}
     <WaveDivider2 />
+
+    {/* Global Operations Map section */}
+    <GlobeSection />
 
     {/* Services section */}
     <Services />
