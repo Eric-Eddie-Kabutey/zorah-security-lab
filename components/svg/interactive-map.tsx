@@ -26,7 +26,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
     highlightedIds = [],
     focalId,
     baseColor = "#E2E8F0",
-    highlightColor = "#94A3B8", // Minimal Slate Grey
+    highlightColor = "#79a0ee", // Minimal Slate Grey
     strokeColor = "#FFFFFF",
     viewBox: manualViewBox,
 }) => {
@@ -67,9 +67,6 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
         return MAP_REGIONS.WORLD;
     }, [focalId, manualViewBox]);
 
-    const handleMouseMove = (e: React.MouseEvent, path: any) => {
-        setHoveredData({ id: path.id, box: path.box, x: e.clientX, y: e.clientY });
-    };
 
     // Extract focal path data if available
     const focalPathData = focalId ? MAP_PATHS.find(p => p.id === focalId) : null;
@@ -101,13 +98,13 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
                         <motion.path
                             key={path.id}
                             d={path.d}
-                            fill={isHighlighted ? highlightColor : baseColor}
+                            fill={(isHighlighted && isFocal) ? highlightColor : baseColor}
                             stroke={strokeColor}
                             strokeWidth="0.5"
                             initial={{ opacity: 0 }}
                             animate={{
                                 opacity: 1,
-                                fill: isHighlighted ? highlightColor : baseColor,
+                                fill: (isHighlighted && isFocal) ? highlightColor : baseColor,
                                 // Subtle transition for focal state
                                 // We use a longer transition if it's the focal one being transitioned
                                 transition: {
@@ -115,13 +112,13 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
                                 }
                             }}
                             whileHover={{
-                                fill: '#1E293B', // Deep Slate
+                                fill: '#1E293B', // Deep Slate #79a0ee
                                 opacity: 0.9,
                                 transition: { duration: 0.2 }
                             }}
-                            onMouseMove={(e) => handleMouseMove(e, path)}
-                            onMouseEnter={(e) => handleMouseMove(e, path)}
-                            onMouseLeave={() => setHoveredData(null)}
+                            // onMouseMove={(e) => handleMouseMove(e, path)}
+                            // onMouseEnter={(e) => handleMouseMove(e, path)}
+                            // onMouseLeave={() => setHoveredData(null)}
                             className="cursor-pointer"
                         />
                     );
@@ -140,7 +137,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
                         const visualX = centerX - visualW / 2;
                         const visualY = centerY - visualH / 2;
 
-                        const HUD_COLOR = "#64748B"; // Slate 500
+                        const HUD_COLOR = "#1E293B"; // Slate 500
 
                         return (
                             <motion.g
@@ -195,7 +192,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
                                         animate={{ opacity: 1 }}
                                         transition={{ delay: 1.2 + i * 0.1 }}
                                     >
-                                        <path d="M 0 6 L 0 0 L 6 0" stroke={HUD_COLOR} strokeWidth="0.4" fill="none" />
+                                        <path d="M 0 6 L 0 0 L 6 0" stroke={HUD_COLOR} strokeWidth="0.1" fill="none" />
                                         {/* Small decorative square at corner */}
                                         <rect x="-1" y="-1" width="2" height="2" fill="#94A3B8" stroke={HUD_COLOR} strokeWidth="0.1" />
                                     </motion.g>
@@ -208,7 +205,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
                                     transition={{ delay: 1.5 }}
                                 >
                                     <text x={centerX} y={visualY + 8} textAnchor="middle" fill={HUD_COLOR} fontSize="2.5" fontWeight="normal" letterSpacing="0.2">
-                                        Target
+
                                     </text>
                                     <text x={visualX + visualW + 12} y={centerY} textAnchor="start" fill={HUD_COLOR} fontSize="2" fontStyle="normal">
                                         TRK-88

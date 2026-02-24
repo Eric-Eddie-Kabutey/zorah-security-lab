@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import InteractiveMap, { MAP_REGIONS } from "@/components/svg/interactive-map";
+import InteractiveMap from "@/components/svg/interactive-map";
 
 const HIGHLIGHTED_IDS = ["c154", "c50", "c100", "c150", "c199", "c184"];
 
@@ -38,12 +38,12 @@ const GlobeSection: React.FC = () => {
                     transition={{ duration: 1 }}
                     className="text-center"
                 >
-                    <h2 className="text-3xl md:text-5xl font-bold text-gray-900">
+                    {/* <h2 className="text-3xl md:text-5xl font-bold text-gray-900">
                         {!activeId ? "Global Network Connectivity" : "Localized Security Focus"}
                     </h2>
                     <p className="text-gray-500 mt-2 font-mono text-xs md:text-sm">
                         {!activeId ? "Overview of active operations" : `Active Highlight: ${activeId}`}
-                    </p>
+                    </p> */}
                 </motion.div>
             </div>
 
