@@ -30,7 +30,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
     strokeColor = "#FFFFFF",
     viewBox: manualViewBox,
 }) => {
-    const [hoveredData, setHoveredData] = React.useState<{ id: string; box: { x: number; y: number; w: number; h: number }; x: number; y: number } | null>(null);
+
 
     // Calculate viewBox based on focalId
     const currentViewBox = React.useMemo(() => {
@@ -116,9 +116,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
                                 opacity: 0.9,
                                 transition: { duration: 0.2 }
                             }}
-                            // onMouseMove={(e) => handleMouseMove(e, path)}
-                            // onMouseEnter={(e) => handleMouseMove(e, path)}
-                            // onMouseLeave={() => setHoveredData(null)}
+
                             className="cursor-pointer"
                         />
                     );
@@ -218,38 +216,7 @@ const InteractiveMap: React.FC<InteractiveMapProps> = ({
                         );
                     })()}
 
-                    {/* Temporary Hover Bounding Box */}
-                    {hoveredData && !focalId && (
-                        <motion.g
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                        >
-                            <motion.rect
-                                x={hoveredData.box.x}
-                                y={hoveredData.box.y}
-                                width={hoveredData.box.w}
-                                height={hoveredData.box.h}
-                                fill="none"
-                                stroke="#94A3B8"
-                                strokeWidth="0.8"
-                                strokeDasharray="2,2"
-                                initial={{ scale: 0.9 }}
-                                animate={{ scale: 1 }}
-                                transition={{ duration: 0.2 }}
-                            />
-                            <foreignObject
-                                x={hoveredData.box.x}
-                                y={hoveredData.box.y - 12}
-                                width="100"
-                                height="20"
-                            >
-                                <div className="bg-[#94A3B8] text-white px-1.5 py-0.5 rounded text-[6px] font-bold w-fit whitespace-nowrap shadow-lg">
-                                    ID: {hoveredData.id}
-                                </div>
-                            </foreignObject>
-                        </motion.g>
-                    )}
+
                 </AnimatePresence>
             </motion.svg>
         </div>

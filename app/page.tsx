@@ -7,6 +7,7 @@ import FeaturedRolesSection from "@/components/home/roles/featured-roles";
 import Newsletter from "@/components/shared/news-letter";
 import WaveDivider2 from "@/components/svg/wave-divider2";
 import GlobeSection from "@/components/home/globe-section";
+import ZorahGlobe from "@/components/globe/ZorahGlobe";
 
 export default function Home() {
   return (<>
@@ -18,7 +19,8 @@ export default function Home() {
     <WaveDivider2 />
 
     {/* Global Operations Map section */}
-    <GlobeSection />
+    {/* <GlobeSection /> */}
+    <ZorahGlobe />
 
     {/* Services section */}
     <Services />

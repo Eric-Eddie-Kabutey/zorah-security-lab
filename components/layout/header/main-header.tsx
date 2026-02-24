@@ -22,7 +22,7 @@ const MainHeader = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-background/80 backdrop-blur-sm">
+      <header className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-sm">
         <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 h-20 flex justify-between items-center">
           <Logo />
 
