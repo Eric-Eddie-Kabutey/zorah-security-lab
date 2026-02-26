@@ -38,7 +38,7 @@ export default function Home() {
     {/* Divider section */}
     {/* <Divider /> */}
     {/* Contact section */}
-    <Contact />
+    {/* <Contact /> */}
 
     {/* Newsletter section */}
     <Newsletter />

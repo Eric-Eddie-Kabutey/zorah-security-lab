@@ -7,6 +7,7 @@ import { newsletterFormSchema, NewsletterFormValues } from '@/lib/validators'; /
 
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 type SubmissionStatus = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -74,8 +75,8 @@ const Newsletter: React.FC = () => {
 
   return (
     // bg-[#dfedcd]
-    <section className=" text-foreground/90">
-      <div className="relative max-w-[1230px] 2xl:max-w-[1390px] min-h-[80vh] mx-auto px-6 py-24 flex items-center justify-center">
+    <section className="relative max-w-[1230px] 2xl:max-w-[1390px] overflow-hidden mx-auto px-6 text-foreground/90">
+      <div className="relative pt-24 flex items-center min-h-[80vh] justify-center">
         <div className="w-full relative grid grid-cols-1 md:grid-cols-5 items-center gap-12 md:gap-16 z-20">
           {/* Column 1: Title */}
           <div className="col-span-1 md:col-span-3">
@@ -161,6 +162,16 @@ const Newsletter: React.FC = () => {
 
 
       </div>
+      <motion.div
+        className="absolute bottom-20 left-6 sm:left-1/2 z-50"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.5 }}
+      >
+        <Link href="/contact" className="text-sm font-medium tracking-widest text-foreground/70 hover:text-foreground">
+          CONTACT US &rarr;
+        </Link>
+      </motion.div>
     </section>
   );
 };

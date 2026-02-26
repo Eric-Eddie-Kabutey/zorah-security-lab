@@ -68,7 +68,7 @@ const InfoBlock = ({
     >
       <div
         className={cn(
-          "hero-info-container h-full min-h-[160px] md:min-h-[190px]",
+          "hero-info-container h-full min-h-[160px] md:min-h-[160px]",
           className,
           "relative overflow-hidden rounded-2xl p-6 flex flex-col justify-between",
           color,
@@ -151,7 +151,7 @@ const Hero: React.FC = () => {
   const currentPartnerSet = partnerSets[partnerIndex];
 
   return (
-    <section className="relative bg-white max-w-[1230px] 2xl:max-w-[1390px] mx-auto h-auto flex flex-col-reverse md:flex-col items-start justify-start text-left px-6 overflow-hidden">
+    <section className="relative bg-white max-w-[1230px] 2xl:max-w-[1390px] mx-auto h-auto flex flex-col items-start justify-start text-left px-6 overflow-hidden">
 
       {/* Responsive Info Blocks Section */}
       <div className="w-full mt-4 md:mt-16 mb-10 md:mb-20 z-10">
