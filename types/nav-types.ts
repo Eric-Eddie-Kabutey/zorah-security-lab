@@ -5,6 +5,7 @@ export interface DropdownMenuItem {
     href: string;
     iconUrl: string | StaticImageData;
     imageUrl?: string | StaticImageData;
+    tags?: string[];
 }
 
 export type NavItem = {

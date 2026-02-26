@@ -13,6 +13,14 @@ import {
 import { Shield, Scan, Fingerprint, Lock } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
+import { navigationItems } from "@/data/nav-data";
+import { DropdownMenuItem } from "@/types/nav-types";
+
+// Helper to get services from nav data
+const getServices = () => {
+  const servicesItem = navigationItems.find(item => item.label === 'Services');
+  return servicesItem?.dropdownMenuContent || [];
+};
 
 const partnerSets = [
   {
@@ -29,118 +37,104 @@ const partnerSets = [
   },
 ];
 
-const SECURITY_BLOCKS = [
-  {
-    id: "01",
-    icon: Shield,
-    title: "Cyber Defence & Threat Neutralization",
-    color: "bg-gray-100",
-  },
-  {
-    id: "02",
-    icon: Scan,
-    title: "Digital Forensics & Investigations",
-    color: "bg-gray-400",
-  },
-  {
-    id: "03",
-    icon: Fingerprint,
-    title: "Intelligence & Data Integrity",
-    color: "bg-gray-300",
-  },
-  {
-    id: "04",
-    icon: Lock,
-    title: "Critical Infrastructure Protection",
-    color: "bg-gray-700",
-  },
+const COLORS = [
+  "bg-gray-100",
+  "bg-gray-400",
+  "bg-gray-300",
+  "bg-gray-700",
 ];
 
+const ICONS = [Shield, Scan, Fingerprint, Lock];
+
 const InfoBlock = ({
-  block,
+  item,
+  index,
   className = "",
 }: {
-  block: (typeof SECURITY_BLOCKS)[0];
+  item: DropdownMenuItem;
+  index: number;
   className?: string;
 }) => {
-  const isDark = block.color === "bg-gray-700" || block.color === "bg-gray-400";
+  const color = COLORS[index % COLORS.length];
+  const isDark = color === "bg-gray-700" || color === "bg-gray-400";
+  const displayId = String(index + 1).padStart(2, '0');
 
   return (
-    <motion.h1
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: index * 0.1 }}
+      className="h-full"
     >
       <div
         className={cn(
-          "hero-info-container",
+          "hero-info-container h-full min-h-[160px] md:min-h-[190px]",
           className,
-          "relative overflow-hidden rounded-2xl p-6",
-          block.color,
+          "relative overflow-hidden rounded-2xl p-6 flex flex-col justify-between",
+          color,
           "backdrop-blur-xl",
         )}
       >
         {/* glass overlay layer */}
-        <div
-          className={cn(
-            "pointer-events-none absolute inset-0",
-          )}
-        />
-
-        {/* subtle border (looks like glass edge) */}
-        <div
-          className={cn(
-            "pointer-events-none absolute inset-0 rounded-2xl",
-          )}
-        />
-
-        {/* optional glow blobs */}
-        <div className="pointer-events-none absolute inset-0">
-          <div
-            className={cn(
-              "absolute -top-24 -left-24 h-56 w-56 rounded-full blur-3xl",
-              isDark ? "bg-white/10" : "bg-white/20"
-            )}
-          />
-          <div
-            className={cn(
-              "absolute -bottom-24 -right-24 h-56 w-56 rounded-full blur-3xl",
-              isDark ? "bg-white/10" : "bg-white/20"
-            )}
-          />
-        </div>
+        <div className="pointer-events-none absolute inset-0" />
 
         {/* content */}
-        <div className="relative z-10">
+        <div className="relative z-10 flex flex-col h-full">
           <div className="flex flex-row justify-between items-start gap-2">
             <span
               className={cn(
                 "text-4xl leading-none font-bold",
-                isDark ? "text-white/50" : "text-gray-900/50"
+                isDark ? "text-white/30" : "text-gray-900/30"
               )}
             >
-              {block.id}
+              {displayId}
             </span>
           </div>
 
-          <div className="mt-4">
-            <p
+          <div className="mt-2 flex-grow">
+            <h3
               className={cn(
-                "text-md font-normal capitalize",
+                "text-lg font-bold uppercase tracking-tight leading-tight mb-3",
                 isDark ? "text-gray-100" : "text-gray-900"
               )}
             >
-              {block.title}
-            </p>
+              {item.title}
+            </h3>
+
+            {/* Sub-services as badges */}
+            <div className="flex flex-wrap gap-1.5">
+              {item.tags?.map((tag) => (
+                <span
+                  key={tag}
+                  className={cn(
+                    "text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-[10px] border",
+                    isDark
+                      ? "bg-white/10 border-white/20 text-white/70"
+                      : "bg-black/5 border-black/10 text-black/60"
+                  )}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
+
+        {/* glass effect decorations */}
+        <div className="pointer-events-none absolute inset-0 opacity-20">
+          <div className={cn(
+            "absolute -top-12 -left-12 h-32 w-32 rounded-full blur-2xl",
+            isDark ? "bg-white/20" : "bg-black/10"
+          )} />
+        </div>
       </div>
-    </motion.h1>
+    </motion.div>
   );
 };
 
 
 const Hero: React.FC = () => {
+  const services = getServices();
   const [partnerIndex, setPartnerIndex] = useState(0);
   const [emblaRef] = useEmblaCarousel({ loop: true }, [
     Autoplay({ delay: 3000, stopOnInteraction: false }),
@@ -149,7 +143,7 @@ const Hero: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setPartnerIndex((prevIndex) => (prevIndex + 1) % partnerSets.length);
-    }, 5000); // Change every 5 seconds
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
@@ -159,35 +153,25 @@ const Hero: React.FC = () => {
   return (
     <section className="relative bg-white max-w-[1230px] 2xl:max-w-[1390px] mx-auto h-auto flex flex-col-reverse md:flex-col items-start justify-start text-left px-6 overflow-hidden">
 
-      {/* <Spotlight
-        gradientFirst="radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(210, 100%, 85%, .15) 0, hsla(210, 100%, 55%, .05) 50%, hsla(210, 100%, 45%, 0) 80%)"
-        gradientSecond="radial-gradient(50% 50% at 50% 50%, hsla(210, 100%, 85%, .12) 0, hsla(210, 100%, 55%, .04) 80%, transparent 100%)"
-        gradientThird="radial-gradient(50% 50% at 50% 50%, hsla(210, 100%, 85%, .1) 0, hsla(210, 100%, 45%, .03) 80%, transparent 100%)"
-        translateY={-350}
-        smallWidth={240}
-        duration={7}
-        xOffset={100}
-      /> */}
       {/* Responsive Info Blocks Section */}
-      <div className="w-full mt-4 md:mt-20 mb-10 md:mb-20 z-10">
-        {/* Mobile Carousel*/}
+      <div className="w-full mt-4 md:mt-16 mb-10 md:mb-20 z-10">
+        {/* Mobile Carousel */}
         <div className="md:hidden overflow-hidden" ref={emblaRef}>
           <div className="flex">
-            {SECURITY_BLOCKS.map((block) => (
-              <div key={block.id} className="flex-[0_0_100%] min-w-0 px-1">
-                <InfoBlock block={block} />
+            {services.map((item, index) => (
+              <div key={index} className="flex-[0_0_100%] min-w-0 px-1">
+                <InfoBlock item={item} index={index} />
               </div>
             ))}
           </div>
         </div>
 
-        {/* Desktop Grid  */}
-        <div className="hidden md:grid grid-cols-3 grid-rows-2 gap-2">
+        {/* Desktop Grid */}
+        <div className="hidden md:grid grid-cols-3 gap-4">
           <div className="hero-info-container bg-transparent"></div>
-          <InfoBlock block={SECURITY_BLOCKS[0]} />
-          <InfoBlock block={SECURITY_BLOCKS[1]} />
-          <InfoBlock block={SECURITY_BLOCKS[2]} />
-          <InfoBlock block={SECURITY_BLOCKS[3]} />
+          {services.slice(0, 4).map((item, index) => (
+            <InfoBlock key={index} item={item} index={index} />
+          ))}
           <div className="hero-info-container bg-transparent"></div>
         </div>
       </div>
@@ -197,41 +181,40 @@ const Hero: React.FC = () => {
           "absolute inset-0",
           "[background-size:20px_20px]",
           "[background-image:radial-gradient(#d4d4d4_1px,transparent_2px)]",
-          "dark:[background-image:radial-gradient(#404040_1px,transparent_3px)]",
         )}
       />
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent,black)] dark:bg-[#F7F8F5]"></div>
-      <div className="z-20">
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent,black)]"></div>
 
+      <div className="z-20">
         <div className="w-full">
-          {/* Main Heading */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="text-4xl mg:text-5xl md:text-7xl font-mono text-gray-900 font-bold md:leading-20 uppercase">
+            className="text-4xl md:text-7xl font-mono text-gray-900 font-bold md:leading-20 uppercase"
+          >
             Digital Forensics
           </motion.h1>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="text-4xl mg:text-5xl md:text-7xl font-mono text-gray-900/80 font-bold md:leading-20 uppercase">
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+            className="text-4xl md:text-7xl font-mono text-gray-900/80 font-bold md:leading-20 uppercase"
+          >
             Business Security
           </motion.h1>
 
-          {/* Subheading */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-5xl mt-4 text-base lg:text-lg font-mono text-gray-700 font-medium leading-relaxed">
-            Zorah Security Lab is the first integrated partner dedicated to securing Critical Governmenet and Business Digital Integrity, critical infrastructure and assets by unifying cyber defence, digital forensics, investigations and physical asset recovery under one command.
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+            className="max-w-5xl mt-4 text-base lg:text-lg font-mono text-gray-700 font-medium leading-relaxed"
+          >
+            Zorah Security Lab is the first integrated partner dedicated to securing Critical Government and Business Digital Integrity, critical infrastructure and assets by unifying cyber defence, digital forensics, investigations and physical asset recovery under one command.
           </motion.p>
         </div>
 
-        {/* Animated Partner Logos Section */}
-        <div className="py-10  w-full">
+        <div className="py-10 w-full">
           <AnimatePresence mode="wait">
             <motion.div
               key={partnerIndex}

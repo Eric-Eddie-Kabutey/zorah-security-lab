@@ -342,16 +342,15 @@ export default function ZorahGlobe() {
     const data = country ? COUNTRY_DATA[country] : null;
 
     return (
-        <div className="globe-container w-full max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6">
+        <div className="globe-container w-full max-w-[1230px] 2xl:max-w-[1390px] min-h-[calc(100vh-80px)] lg:h-[calc(100vh-80px)] mx-auto px-6">
             <div ref={mountRef} className="absolute inset-0" />
             <div className="fogginess-overlay" />
 
             {/* Top Header */}
             <div id="top-header">
-                <div className="header-slogan">Powering African businesses</div>
-                <div className="service-headline">DIGITAL FORENSICS / BUSINESS SECURITY</div>
-                <div className="lab-description">
-                    <b>Zorah Security Lab</b> has been impactful and instrumental in the fight against cybercrime in Ghana and across Africa.
+                <div className="text-xl font-bold uppercase text-gray-900">Powering African businesses</div>
+                <div className="text-lg md:text-xl text-gray-500 max-w-xl leading-relaxed mt-4">
+                    Zorah Security Lab has been impactful and instrumental in the fight against cybercrime in Ghana and across Africa.
                 </div>
             </div>
 
@@ -409,12 +408,6 @@ export default function ZorahGlobe() {
                     <div className="status-item">
                         <span className="status-label">TARGETS:</span>
                         <span className="status-val">{String(currentIdx + 1).padStart(2, '0')} / 05</span>
-                    </div>
-                </div>
-                <div className="status-group">
-                    <div className="status-item">
-                        <span className="status-label">TIME_UTC:</span>
-                        <span id="live-clock">{timeUtc}</span>
                     </div>
                 </div>
             </div>

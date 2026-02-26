@@ -9,8 +9,7 @@ const Services: React.FC = () => {
     const allServices = servicesItem?.dropdownMenuContent || [];
 
     return (
-        <section id="services-section" className="bg-background">
-            {/* ✅ Mono-style scroll stack - always active, showing all items */}
+        <section id="services-section" className="relative bg-white w-full">
             <StackedServices items={allServices} />
         </section>
     );

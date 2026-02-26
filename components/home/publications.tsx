@@ -1,86 +1,101 @@
 "use client";
 
-import React, { useState } from 'react';
-import { motion, AnimatePresence, Variants } from 'framer-motion';
-import { allPublications } from '@/data/publication-data'
+import React, { useCallback, useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import useEmblaCarousel from 'embla-carousel-react';
+import { allPublications } from '@/data/publication-data';
 import PublicationCard from './publication-card';
-;
-
-const INITIAL_VISIBLE_COUNT = 3;
-
-// Animation variants
-const containerVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
-  exit: { opacity: 0, y: -30, transition: { duration: 0.3, ease: 'easeIn' } },
-};
-
+import { cn } from '@/lib/utils';
 
 const Publications: React.FC = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: 'start',
+    containScroll: 'trimSnaps',
+    dragFree: true,
+  });
 
-  const toggleView = () => {
-    setIsExpanded(prevState => !prevState);
-  };
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 
-  const visibleCount = isExpanded ? allPublications.length : INITIAL_VISIBLE_COUNT;
-  const visiblePublications = allPublications.slice(0, visibleCount);
-  const buttonText = isExpanded ? 'VIEW LESS' : 'VIEW ALL';
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
 
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    setScrollSnaps(emblaApi.scrollSnapList());
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+  }, [emblaApi, setScrollSnaps, onSelect]);
+
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
   return (
-    <section className="bg-background py-24 px-6">
+    <section className="bg-white py-24 overflow-hidden">
       <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6">
+
         {/* Section Header */}
-        <div className="flex justify-between items-center mb-12">
-          <h2 className="text-lg font-mono font-bold uppercase text-foreground">publications</h2>
-          {/* Button is always visible if there are more items to show/hide */}
-          {allPublications.length > INITIAL_VISIBLE_COUNT && (
-            <button
-              onClick={toggleView}
-              className="text-sm font-medium tracking-widest text-foreground/70 hover:text-foreground"
-            >
-              {buttonText} &rarr;
-            </button>
-          )}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
+          <div className="flex flex-col">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight uppercase font-mono">
+              Latest <br />
+              <span className="text-gray-400">Publications</span>
+            </h2>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-1.5 mr-4">
+              {scrollSnaps.map((_, index) => (
+                <button
+                  key={index}
+                  className={cn(
+                    "h-1 transition-all duration-300 rounded-full",
+                    index === selectedIndex ? "w-8 bg-black" : "w-2 bg-gray-200"
+                  )}
+                  onClick={() => emblaApi?.scrollTo(index)}
+                />
+              ))}
+            </div>
+            <div className="flex gap-2">
+              <button
+                onClick={scrollPrev}
+                className="w-12 h-12 rounded-[10px] border border-gray-200 flex items-center justify-center hover:bg-black hover:border-black hover:text-white transition-all duration-300 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-black"
+                disabled={!emblaApi?.canScrollPrev()}
+              >
+                <span className="text-xl">←</span>
+              </button>
+              <button
+                onClick={scrollNext}
+                className="w-12 h-12 rounded-[10px] border border-gray-200 flex items-center justify-center hover:bg-black hover:border-black hover:text-white transition-all duration-300 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-black"
+                disabled={!emblaApi?.canScrollNext()}
+              >
+                <span className="text-xl">→</span>
+              </button>
+            </div>
+          </div>
         </div>
 
-        {/* Publications Grid */}
-        <motion.div
-          className=""
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {/* 4. WRAP THE MAPPED ITEMS IN AnimatePresence */}
-          <AnimatePresence>
-            {visiblePublications.map((publication) => (
-              // The key needs to be on the motion component directly inside AnimatePresence
-              <motion.div
-                key={publication.id}
-                variants={itemVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit" // This tells Framer Motion how to animate the item out
-                layout // This helps animate the grid reflow smoothly
-              >
-                <PublicationCard publication={publication} />
-              </motion.div>
+        {/* Carousel Container */}
+        <div className="relative overflow-hidden" ref={emblaRef}>
+          <div className="flex gap-6">
+            {allPublications.map((publication, index) => (
+              <div key={publication.id} className="flex-[0_0_auto]">
+                <PublicationCard
+                  publication={publication}
+                  index={index}
+                />
+              </div>
             ))}
-          </AnimatePresence>
-        </motion.div>
+          </div>
+          {/* Edge Gradients for smooth blending */}
+            {/* <div className="w-[8%] h-full absolute top-0 left-0 bg-gradient-to-r from-white to-transparent z-20" />
+            <div className="w-[8%] h-full absolute bottom-0 right-0 bg-gradient-to-l from-white to-transparent z-20" /> */}
+        </div>
       </div>
     </section>
-
   );
 };
 
