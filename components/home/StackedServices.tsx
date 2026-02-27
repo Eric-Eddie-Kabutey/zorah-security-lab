@@ -92,7 +92,7 @@ export function StackedServices({ items }: Props) {
 
                 {/* Top Section - "Our Services" */}
                 <div className="w-full py-4 md:py-8 flex justify-between items-end">
-                    <h2 className="text-xl font-mono font-bold uppercase text-gray-900">
+                    <h2 className="text-xl font-bold uppercase text-gray-900">
                         Our Services
                     </h2>
                 </div>
@@ -120,7 +120,7 @@ export function StackedServices({ items }: Props) {
                                                 initial={{ y: 20, opacity: 0 }}
                                                 animate={{ y: 0, opacity: 1 }}
                                                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-                                                className="text-2xl md:text-3xl lg:text-5xl font-bold font-mono text-gray-900 mb-4 lg:mb-6 uppercase tracking-[-0.03em] leading-[1.1] max-w-sm"
+                                                className="text-2xl md:text-3xl lg:text-5xl font-bold text-gray-900 mb-4 lg:mb-6 uppercase tracking-[-0.03em] leading-[1.1] max-w-sm"
                                             >
                                                 {activeItem.title}
                                             </motion.h3>
@@ -129,14 +129,14 @@ export function StackedServices({ items }: Props) {
                                                 initial={{ width: 0 }}
                                                 animate={{ width: 40 }}
                                                 transition={{ duration: 0.8, delay: 0.3 }}
-                                                className="h-[2px] bg-black mb-4 lg:mb-6"
+                                                className="h-[2px] bg-black"
                                             />
 
                                             <motion.p
                                                 initial={{ y: 20, opacity: 0 }}
                                                 animate={{ y: 0, opacity: 1 }}
                                                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-                                                className="text-base md:text-lg font-mono text-gray-400 max-w-xs leading-relaxed"
+                                                className="text-lg md:text-xl text-gray-500 max-w-xl leading-relaxed"
                                             >
                                                 {activeItem.description}
                                             </motion.p>

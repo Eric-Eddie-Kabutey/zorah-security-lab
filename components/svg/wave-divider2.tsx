@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { WAVE_PATHS } from "./wave-paths";
+import { WaveBackground } from "./wave-background";
 
 interface WaveDivider2Props {
     className?: string;
@@ -13,15 +13,6 @@ const WaveDivider2: React.FC<WaveDivider2Props> = ({
     className = "",
     color = "#49FF98",
 }) => {
-    const GREY_VARIANTS = [
-        "#F8FAFC", // slate-50
-        "#F1F5F9", // slate-100
-        "#E2E8F0", // slate-200
-        "#CBD5E1", // slate-300
-        "#94A3B8", // slate-400
-        "#64748B", // slate-500
-        "#475569", // slate-600
-    ];
 
     const stats = [
         {
@@ -47,60 +38,14 @@ const WaveDivider2: React.FC<WaveDivider2Props> = ({
     ];
 
     return (
-        <div className={`relative w-full min-h-screen py-20 flex items-center overflow-hidden ${className}`}>
+        <div className={`relative max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 md:min-h-[600px] min-h-screen flex items-center overflow-hidden ${className}`}>
             {/* SVG Background */}
-            <div className="absolute max-w-[1230px] 2xl:max-w-[1390px] mx-auto inset-0 z-0 pointer-events-none ">
-                <svg
-                    width="100%"
-                    height="100%"
-                    viewBox="0 0 1916 873"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    preserveAspectRatio="xMidYMid slice"
-                    className="w-full h-full"
-                >
-                    {WAVE_PATHS.map((path, index) => {
-                        const duration = 10 + Math.random() * 10;
-                        const delay = Math.random() * -15;
-                        const opacity = 0.05 + Math.random() * 0.15;
-                        const pathColor = color === "#49FF98"
-                            ? GREY_VARIANTS[index % GREY_VARIANTS.length]
-                            : color;
+            <WaveBackground />
 
-                        return (
-                            <motion.path
-                                key={index}
-                                d={path}
-                                stroke={pathColor}
-                                strokeWidth="1"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                initial={{ opacity: 0 }}
-                                animate={{
-                                    opacity: [opacity, opacity * 2, opacity],
-                                    y: [0, -20, 0],
-                                }}
-                                transition={{
-                                    duration: duration,
-                                    repeat: Infinity,
-                                    ease: "easeInOut",
-                                    delay: delay,
-                                }}
-                            />
-                        );
-                    })}
-                </svg>
-            </div>
-
-            {/* Edge Gradients for smooth blending */}
-            <div className="w-full h-20 absolute top-0 left-0 bg-gradient-to-b from-white to-transparent z-20" />
-            <div className="w-full h-20 absolute bottom-0 left-0 bg-gradient-to-t from-white to-transparent z-20" />
-            <div className="w-[50%] h-full absolute top-0 left-0 bg-gradient-to-r from-white to-transparent z-20" />
-            <div className="w-[50%] h-full absolute bottom-0 right-0 bg-gradient-to-l from-white to-transparent z-20" />
 
             {/* Content Container */}
-            <div className="relative z-20 max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 w-full">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+            <div className="relative z-20 w-full">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center md:py-40">
 
                     {/* Left Column: Text Content */}
                     <div className="lg:col-span-7 flex flex-col">
@@ -144,7 +89,7 @@ const WaveDivider2: React.FC<WaveDivider2Props> = ({
                     </div>
 
                     {/* Right Column: Stats Grid */}
-                    <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-12">
+                    <div className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-2 gap-8 lg:gap-12">
                         {stats.map((stat, index) => (
                             <motion.div
                                 key={stat.label}

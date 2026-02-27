@@ -15,6 +15,8 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { navigationItems } from "@/data/nav-data";
 import { DropdownMenuItem } from "@/types/nav-types";
+import { GridPattern } from "../ui/grid-pattern";
+import { DotPattern } from "../ui/dot-pattern";
 
 // Helper to get services from nav data
 const getServices = () => {
@@ -64,37 +66,37 @@ const InfoBlock = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: index * 0.1 }}
-      className="h-full"
+      className="h-full p-0 md:p-1" // Added p-2 to create a consistent 16px gap between card contents
     >
       <div
         className={cn(
-          "hero-info-container h-full min-h-[160px] md:min-h-[160px]",
+          "hero-info-container h-full min-h-[168px]", // Matches the height of the tallest item in the row
           className,
-          "relative overflow-hidden rounded-2xl p-6 flex flex-col justify-between",
+          "relative overflow-hidden rounded-xl flex flex-col justify-between",
           color,
-          "backdrop-blur-xl",
+          "backdrop-blur-xl border border-neutral-300/50",
         )}
       >
         {/* glass overlay layer */}
         <div className="pointer-events-none absolute inset-0" />
 
         {/* content */}
-        <div className="relative z-10 flex flex-col h-full">
-          <div className="flex flex-row justify-between items-start gap-2">
+        <div className="relative z-10 flex flex-col h-full p-6 pt-5">
+          <div className="flex justify-between items-start">
             <span
               className={cn(
-                "text-4xl leading-none font-bold",
-                isDark ? "text-white/30" : "text-gray-900/30"
+                "text-5xl font-mono font-bold tracking-tighter leading-none",
+                isDark ? "text-gray-100/70" : "text-gray-900/70"
               )}
             >
               {displayId}
             </span>
           </div>
 
-          <div className="mt-2 flex-grow">
+          <div className="mt-2 flex flex-col gap-4">
             <h3
               className={cn(
-                "text-lg font-bold uppercase tracking-tight leading-tight mb-3",
+                "text-xl font-bold uppercase tracking-tight leading-[1.2] max-w-[90%]",
                 isDark ? "text-gray-100" : "text-gray-900"
               )}
             >
@@ -103,14 +105,14 @@ const InfoBlock = ({
 
             {/* Sub-services as badges */}
             <div className="flex flex-wrap gap-1.5">
-              {item.tags?.map((tag) => (
+              {item.tags?.slice(0, 4).map((tag) => (
                 <span
                   key={tag}
                   className={cn(
-                    "text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-[10px] border",
+                    "text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-sm border",
                     isDark
-                      ? "bg-white/10 border-white/20 text-white/70"
-                      : "bg-black/5 border-black/10 text-black/60"
+                      ? "bg-white/5 border-gray-100/10 text-gray-100"
+                      : "bg-black/5 border-gray-900/10 text-gray-900"
                   )}
                 >
                   {tag}
@@ -120,13 +122,13 @@ const InfoBlock = ({
           </div>
         </div>
 
-        {/* glass effect decorations */}
-        <div className="pointer-events-none absolute inset-0 opacity-20">
+        {/* Technical Deco */}
+        {/* <div className="pointer-events-none absolute top-0 right-0 p-4 opacity-20">
           <div className={cn(
-            "absolute -top-12 -left-12 h-32 w-32 rounded-full blur-2xl",
-            isDark ? "bg-white/20" : "bg-black/10"
+            "w-8 h-8 border-t border-r",
+            isDark ? "border-white" : "border-black"
           )} />
-        </div>
+        </div> */}
       </div>
     </motion.div>
   );
@@ -151,11 +153,10 @@ const Hero: React.FC = () => {
   const currentPartnerSet = partnerSets[partnerIndex];
 
   return (
-    <section className="relative bg-white max-w-[1230px] 2xl:max-w-[1390px] mx-auto h-auto flex flex-col items-start justify-start text-left px-6 overflow-hidden">
+    <section className="relative bg-white w-full max-w-[1230px] 2xl:max-w-[1390px] mx-auto h-auto flex flex-col items-start justify-start text-left px-6 overflow-hidden">
 
       {/* Responsive Info Blocks Section */}
-      <div className="w-full mt-4 md:mt-16 mb-10 md:mb-20 z-10">
-        {/* Mobile Carousel */}
+      <div className="w-full mt-4 md:mt-8 mb-10 md:mb-10 z-10">
         <div className="md:hidden overflow-hidden" ref={emblaRef}>
           <div className="flex">
             {services.map((item, index) => (
@@ -165,22 +166,33 @@ const Hero: React.FC = () => {
             ))}
           </div>
         </div>
-
-        {/* Desktop Grid */}
-        <div className="hidden md:grid grid-cols-3 gap-4">
+        <div className="hidden md:grid grid-cols-3 gap-0">
           <div className="hero-info-container bg-transparent"></div>
           {services.slice(0, 4).map((item, index) => (
-            <InfoBlock key={index} item={item} index={index} />
+            <InfoBlock key={index} item={item} index={index} className="" />
           ))}
-          <div className="hero-info-container bg-transparent"></div>
+          <div className="hero-info-container bg-transparent "></div>
         </div>
       </div>
 
-      <div
+      {/* <GridPattern
+        width={100}
+        height={100}
+        x={24}
+        y={0}
         className={cn(
-          "absolute inset-0",
-          "[background-size:20px_20px]",
-          "[background-image:radial-gradient(#d4d4d4_1px,transparent_2px)]",
+          "[mask-image:radial-gradient(1200px_circle_at_center,white,transparent)]",
+        )}
+      /> */}
+
+      <DotPattern
+        width={32}
+        height={32}
+        cx={1}
+        cy={1}
+        cr={1}
+        className={cn(
+          "[mask-image:radial-gradient(1000px_circle_at_center,white,transparent)]",
         )}
       />
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-white [mask-image:radial-gradient(ellipse_at_center,transparent,black)]"></div>
@@ -191,7 +203,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="text-4xl md:text-7xl font-mono text-gray-900 font-bold md:leading-20 uppercase"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-[1.1] md:leading-20 "
           >
             Digital Forensics
           </motion.h1>
@@ -199,7 +211,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            className="text-4xl md:text-7xl font-mono text-gray-900/80 font-bold md:leading-20 uppercase"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-400 leading-[1.1] md:leading-20 "
           >
             Business Security
           </motion.h1>

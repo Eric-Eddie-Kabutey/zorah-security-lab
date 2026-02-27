@@ -1,6 +1,7 @@
 import AboutContent from '@/components/about/about-content'
 import Newsletter from '@/components/shared/news-letter'
 import PageHeader from '@/components/shared/page-header'
+import WaveDivider2 from '@/components/svg/wave-divider2'
 
 export default function AboutPage() {
 	return (
@@ -16,6 +17,7 @@ export default function AboutPage() {
 					<AboutContent />
 				</div>
 			</div>
+			<WaveDivider2 />
 
 			{/* Newsletter section */}
 			<Newsletter />

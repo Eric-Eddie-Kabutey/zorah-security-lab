@@ -16,33 +16,38 @@ import {
 import './GlobeStyles.css';
 
 const HIGHLIGHTED_COUNTRIES = [
-    "Nigeria",
+    "Gambia",
+    "Senegal",
     "Ghana",
-    "Kenya",
+    "Sierra Leone",
+    "Liberia",
     "South Africa",
-    "Egypt",
 ];
 
 const COUNTRY_DATA: Record<string, { desc: string; lon: string; lat: string }> = {
-    "Nigeria": {
-        desc: "A powerhouse of West Africa, Nigeria features a diverse landscape from the Sahel to the Gulf of Guinea. It is a major global energy producer and cultural center.",
-        lon: "8.6753° E", lat: "9.0820° N"
+    "Gambia": {
+        desc: "Located on the west coast of Africa, it is the smallest country on mainland Africa. It is known for its diverse ecosystems around the central Gambia River.",
+        lon: "15.3101° W", lat: "13.4432° N"
+    },
+    "Senegal": {
+        desc: "The westernmost country in the Cape Verde peninsula, Senegal is a gateway to Africa with a rich colonial heritage and vibrant culture.",
+        lon: "14.4524° W", lat: "14.4974° N"
     },
     "Ghana": {
-        desc: "Located along the Gulf of Guinea, Ghana is known for its diverse wildlife, old forts, and secluded beaches. It is a beacon of stability and democracy in the region.",
+        desc: "Located along the Gulf of Guinea, Ghana is a beacon of stability and economic growth, known for its diverse wildlife and rich history.",
         lon: "1.0232° W", lat: "7.9465° N"
     },
-    "Kenya": {
-        desc: "An East African hub known for its dramatic terrain, including the Great Rift Valley and mountain highlands. Home to the legendary Great Migration and tech innovations.",
-        lon: "37.9062° E", lat: "1.2921° S"
+    "Sierra Leone": {
+        desc: "A West African nation with a stunning coastline and significant mineral wealth, Sierra Leone is emerging as a resilient hub for digital security and integrity.",
+        lon: "11.7799° W", lat: "8.4606° N"
+    },
+    "Liberia": {
+        desc: "Africa's oldest republic, Liberia is known for its lush rainforests and vital maritime sector along the Atlantic coast.",
+        lon: "9.4295° W", lat: "6.4281° N"
     },
     "South Africa": {
-        desc: "The southernmost country on the African continent, defined by its massive plateaus, coastal plains, and the iconic Table Mountain. A major industrial and financial center.",
+        desc: "The southernmost power, defined by its advanced industrial index and major financial centers. A critical hub for continent-wide digital infrastructure.",
         lon: "22.9375° E", lat: "30.5595° S"
-    },
-    "Egypt": {
-        desc: "A Mediterranean country spanning the northeast corner of Africa and southwest corner of Asia. Famous for its ancient civilization and the vital Suez Canal waterway.",
-        lon: "30.8025° E", lat: "26.8206° N"
     }
 };
 
@@ -344,6 +349,8 @@ export default function ZorahGlobe() {
     return (
         <div className="globe-container w-full max-w-[1230px] 2xl:max-w-[1390px] min-h-[calc(100vh-80px)] lg:h-[calc(100vh-80px)] mx-auto px-6">
             <div ref={mountRef} className="absolute inset-0" />
+            <div className="absolute top-0 h-[10%] w-[100%] bg-gradient-to-b from-white to-transparent" ></div>
+            <div className="absolute bottom-0 h-[10%] w-[100%] bg-gradient-to-t from-white to-transparent" ></div>
             <div className="fogginess-overlay" />
 
             {/* Top Header */}
@@ -396,7 +403,7 @@ export default function ZorahGlobe() {
             </div>
 
             {/* Status Bar */}
-            <div id="status-bar">
+            {/* <div id="status-bar">
                 <div className="status-group">
                     <div className="status-item">
                         <div className="status-indicator"></div>
@@ -407,10 +414,10 @@ export default function ZorahGlobe() {
                     </div>
                     <div className="status-item">
                         <span className="status-label">TARGETS:</span>
-                        <span className="status-val">{String(currentIdx + 1).padStart(2, '0')} / 05</span>
+                        <span className="status-val">{String(currentIdx + 1).padStart(2, '0')} / 06</span>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }

@@ -108,9 +108,12 @@ const Footer: React.FC = () => {
         <p className="text-sm text-zinc-500 leading-relaxed text-center md:text-start">
           Copyright <span className="text-white text-xs">©</span>  Zorah Security Lab {currentYear}. All rights reserved.
         </p>
-        <p className="text-sm text-zinc-500 leading-relaxed text-end md:text-center">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="text-sm text-zinc-500 leading-relaxed text-end md:text-center hover:text-white transition-colors cursor-pointer"
+        >
           Back to top <span className="text-white text-xs">↑</span>
-        </p>
+        </button>
       </div>
     </footer>
   );

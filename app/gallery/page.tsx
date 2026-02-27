@@ -11,7 +11,7 @@ export default function GalleryPage() {
         <PageHeader title="Gallery" />
 
         {/* Flittered service section */}       
-        <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto py-16 md:py-24 px-6">
+        <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto pb-16 md:pb-24 px-6">
           <FilterableGallery categories={categories} />
         </div>
     </>)
