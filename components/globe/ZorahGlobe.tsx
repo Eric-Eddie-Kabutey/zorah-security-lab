@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import {
     createGlobeTexture,
     createLandMaskTexture,
@@ -64,7 +63,6 @@ export default function ZorahGlobe() {
     const hudRef = useRef<HTMLDivElement>(null);
     const [currentIdx, setCurrentIdx] = useState(-1);
     const [phase, setPhase] = useState("idle");
-    const [timeUtc, setTimeUtc] = useState("");
 
     useEffect(() => {
         if (!mountRef.current) return;
@@ -322,11 +320,6 @@ export default function ZorahGlobe() {
 
             if (mistMat) mistMat.uniforms.viewVector.value.copy(camera.position);
 
-            // Local Clock Update
-            const now = new Date();
-            setTimeUtc(now.getUTCHours().toString().padStart(2, '0') + ":" +
-                now.getUTCMinutes().toString().padStart(2, '0') + ":" +
-                now.getUTCSeconds().toString().padStart(2, '0'));
 
             renderer.render(scene, camera);
             return requestID;
@@ -335,11 +328,12 @@ export default function ZorahGlobe() {
         init();
         const animID = animate();
 
+        const currentMount = mountRef.current;
         return () => {
             window.removeEventListener('resize', updateCameraOffset);
             cancelAnimationFrame(animID);
             renderer.dispose();
-            mountRef.current?.removeChild(renderer.domElement);
+            currentMount?.removeChild(renderer.domElement);
         };
     }, []);
 

@@ -1,12 +1,8 @@
-import Contact from "@/components/home/contact";
-// import FeaturedRoles from "@/components/home/featured-roles";
 import Hero from "@/components/home/hero";
-import Services from "@/components/home/services";
 import Publications from "@/components/home/publications";
 import FeaturedRolesSection from "@/components/home/roles/featured-roles";
 import Newsletter from "@/components/shared/news-letter";
 import WaveDivider2 from "@/components/svg/wave-divider2";
-import GlobeSection from "@/components/home/globe-section";
 import ZorahGlobe from "@/components/globe/ZorahGlobe";
 
 export default function Home() {
@@ -23,7 +19,7 @@ export default function Home() {
     <ZorahGlobe />
 
     {/* Services section */}
-    <Services />
+    {/* <Services /> */}
 
     {/* Publications section */}
     <Publications />

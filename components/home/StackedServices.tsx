@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, AnimatePresence, useMotionValueEvent } from "framer-motion";
+import { motion, useScroll, AnimatePresence, useMotionValueEvent } from "framer-motion";
 import { DropdownMenuItem } from "@/types/nav-types";
 import Image from 'next/image';
 

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { } from 'framer-motion';
 import useEmblaCarousel from 'embla-carousel-react';
 import { allPublications } from '@/data/publication-data';
 import PublicationCard from './publication-card';
@@ -91,7 +91,7 @@ const Publications: React.FC = () => {
             ))}
           </div>
           {/* Edge Gradients for smooth blending */}
-            {/* <div className="w-[8%] h-full absolute top-0 left-0 bg-gradient-to-r from-white to-transparent z-20" />
+          {/* <div className="w-[8%] h-full absolute top-0 left-0 bg-gradient-to-r from-white to-transparent z-20" />
             <div className="w-[8%] h-full absolute bottom-0 right-0 bg-gradient-to-l from-white to-transparent z-20" /> */}
         </div>
       </div>

@@ -4,8 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Publication } from '@/data/publication-data';
 import { motion } from 'framer-motion';
-import { cn } from '@/lib/utils';
-import { Terminal, Calendar, Layers } from 'lucide-react';
 
 interface PublicationCardProps {
   publication: Publication;

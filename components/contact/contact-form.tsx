@@ -7,7 +7,6 @@ import { contactFormSchema, ContactFormValues } from '@/lib/validators';
 import { Input, Textarea } from '@/components/ui/form-input';
 
 import { motion } from 'framer-motion';
-import { GridPattern } from '../ui/grid-pattern';
 
 type SubmissionStatus = 'idle' | 'submitting' | 'success' | 'error';
 

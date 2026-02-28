@@ -4,12 +4,9 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { newsletterFormSchema, NewsletterFormValues } from '@/lib/validators'; // Adjust path
-
+import { } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import Link from 'next/link';
-import { BlobBackground } from '../svg/blob-background';
-import { WaveBackground } from '../svg/wave-background';
 
 type SubmissionStatus = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -76,121 +73,96 @@ const Newsletter: React.FC = () => {
   };
 
   return (
-    <section className="relative max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 min-h-[80vh] flex items-center overflow-hidden">
-      {/* Reusable Animated Wave Background */}
-      <WaveBackground />
+    <section className=" text-foreground/90">
+      <div className="relative max-w-[1230px] 2xl:max-w-[1390px] min-h-[80vh] mx-auto px-6 flex items-center justify-center">
+        <div className="w-full relative grid grid-cols-1 md:grid-cols-5 items-center gap-12 md:gap-16 z-20"><div className="col-span-1 md:col-span-3">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight uppercase font-mono">Stay up to date</h2>
+          <div className="relative inline-block border-1 border-gray-900/30 px-4 py-2 mt-2">
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-400 tracking-tight uppercase font-mono">with our newsletter</h2>
 
-      {/* Content Container */}
-      <div className="relative z-20 max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
-
-          {/* Left Column: Heading & Description */}
-          <div className="lg:col-span-8 flex flex-col pt-20 lg:pt-0">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-[1.1] mb-8"
-            >
-              STAY<br />
-              <span className="text-gray-400 font-black uppercase tracking-tight">CONNECTED</span>
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-lg md:text-xl text-gray-500 max-w-xl leading-relaxed"
-            >
-              Join our exclusive network for critical security updates, digital forensic insights,
-              and strategic intelligence briefs.
-            </motion.p>
-          </div>
-
-          {/* Right Column: Email Subscription Form (Minimalist) */}
-          <div className="lg:col-span-4 flex flex-col">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="w-full"
-            >
-              {status === 'success' ? (
-                <div className="py-4">
-                  <p className="text-gray-900 font-bold mb-1 tracking-tight">ACCESS GRANTED</p>
-                  <p className="text-sm text-gray-500 font-mono">Channel successfully encrypted.</p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-sm lg:ml-auto">
-                  <div className="relative group">
-                    <div className="flex items-end gap-4 pb-2 border-b border-gray-900/10 transition-colors group-focus-within:border-gray-900/40">
-                      <div className="flex-1 space-y-1">
-                        <label className="block text-[9px] font-mono font-bold uppercase tracking-[0.3em] text-gray-400">
-                          Secure Link
-                        </label>
-                        <input
-                          type="email"
-                          placeholder="Email Address"
-                          {...register('email')}
-                          disabled={isSubmitting}
-                          className="w-full bg-transparent focus:outline-none text-base placeholder:text-gray-300 transition-all disabled:opacity-50"
-                        />
-                      </div>
-                      <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="pb-1 transition-transform duration-300 hover:translate-x-1 disabled:opacity-30"
-                      >
-                        <span className="text-2xl font-light text-gray-900">&rarr;</span>
-                      </button>
-                    </div>
-                    {/* Progress Indicator */}
-                    <div className="absolute -bottom-[1px] left-0 h-[1px] w-0 bg-gray-900 transition-all duration-700 group-focus-within:w-full" />
+            {/* Corner Handles */}
+            <div className="absolute -top-1 -left-1 w-2 h-2 bg-blue-200 z-30" />
+            <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-200 z-30" />
+            <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-blue-200 z-30" />
+            <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-blue-200 z-30" />
+          </div></div><div className="w-full col-span-1 md:col-span-2 max-w-full md:max-w-[236px] md:mx-auto md:font-medium text-black text-left md:text-right">
+            <p className="text-lg md:text-xl text-gray-500 max-w-xl leading-relaxed mb-12">
+              Sign up for our newsletter and get notified with regular updates
+            </p>
+          </div><div className="col-span-1 md:col-span-5 w-full mt-8 md:mt-0">
+            {status === 'success' ? (
+              <p className="text-center md:text-left font-medium">Thank you for subscribing!</p>
+            ) : (
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="flex items-center gap-4">
+                  <div className="relative w-full">
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      {...register('email')}
+                      disabled={isSubmitting}
+                      className="w-full bg-transparent border-b border-foreground/40 focus:border-foreground focus:outline-none py-2 disabled:opacity-50"
+                    />
                   </div>
-
-                  {errors.email && (
-                    <p className="mt-2 text-[10px] font-mono text-red-500 uppercase tracking-wider">{errors.email.message}</p>
-                  )}
-                </form>
-              )}
-            </motion.div>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    aria-label="Submit newsletter subscription"
+                    className="p-2 transition-transform hover:translate-x-1 disabled:opacity-50"
+                  >
+                    <span className="text-2xl">&rarr;</span>
+                  </button>
+                </div>
+                {errors.email && (
+                  <p className="mt-2 text-sm text-red-600">{errors.email.message}</p>
+                )}
+                {status === 'error' && (
+                  <p className="mt-2 text-sm text-red-600">Something went wrong. Please try again.</p>
+                )}
+              </form>
+            )}
           </div>
         </div>
-
-        {/* Technical Navigation Deco */}
-        <div className="mt-24 md:mt-32 pb-20">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.8 }}
-          >
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-4 text-xs font-bold tracking-[0.3em] text-gray-600 hover:text-gray-900 transition-colors group"
-            >
-              <div className="w-12 h-[1px] bg-gray-200 group-hover:bg-gray-900 transition-colors" />
-              CONTACT US
-            </Link>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Background Technical Radar Decoration */}
-      {/* <div className="absolute top-1/2 left-[70%] -translate-y-1/2 opacity-[0.03] pointer-events-none z-0">
-        <div className="relative w-[800px] h-[800px] border border-gray-900 rounded-full flex items-center justify-center">
+        {/* Decorative Background Circles & Radar Effects */}
+        <div className={cn(
+          "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] sm:w-[45%] aspect-square border border-gray-900/5 rounded-full z-0 flex items-center justify-center bg-gray-200/5 overflow-hidden",
+          "[background-size:10px_10px]",
+          "[background-image:linear-gradient(to_right,#f9fafb_1px,transparent_1px),linear-gradient(to_bottom,#f9fafb_1px,transparent_1px)]",
+          "dark:[background-image:linear-gradient(to_right,#171717_1px,transparent_1px),linear-gradient(to_bottom,#171717_1px,transparent_1px)]",
+        )}
+        >
           <RadarSweep />
-          <div className="w-[600px] h-[600px] border border-gray-900 rounded-full" />
-          <div className="w-[400px] h-[400px] border border-gray-900 rounded-full" />
           <RadarBlip top="20%" left="30%" delay={0} />
           <RadarBlip top="60%" left="15%" delay={1.5} />
           <RadarBlip top="40%" left="80%" delay={4} />
           <RadarBlip top="75%" left="65%" delay={2.2} />
         </div>
-      </div> */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] sm:w-[32%] aspect-square border border-gray-800/20 rounded-full z-0 pointer-events-none flex items-center justify-center bg-gray-200/0">
+          <RadarBlip top="30%" left="70%" delay={0.8} />
+          <RadarBlip top="70%" left="20%" delay={3.1} />
+        </div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] sm:w-[22%] aspect-square border border-gray-800/40 rounded-full z-0 pointer-events-none flex items-center justify-center bg-gray-900/15">
+          <RadarBlip top="50%" left="50%" delay={5} />
+        </div>
+
+
+        {/* Orbiting Icons distributed across all three circles */}
+        {/* Outer Circle (45%) */}
+        {/* <OrbitingIcon icon={Shield} radius="45%" duration={30} delay={0} />
+        <OrbitingIcon icon={Search} radius="45%" duration={30} delay={-15} reverse /> */}
+
+        {/* Middle Circle (32%) */}
+        {/* <OrbitingIcon icon={Scan} radius="32%" duration={25} delay={-5} />
+        <OrbitingIcon icon={Search} radius="32%" duration={25} delay={-17} reverse /> */}
+
+        {/* Inner Circle (22%) */}
+        {/* <OrbitingIcon icon={Scan} radius="22%" duration={20} delay={-2} />
+        <OrbitingIcon icon={Shield} radius="22%" duration={20} delay={-12} reverse /> */}
+
+        <div className='absolute inset-0 z-10 bg-gradient-to-b from-transparent via-white to-white'></div>
+
+
+      </div>
     </section>
   );
 };

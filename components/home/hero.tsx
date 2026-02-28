@@ -10,12 +10,11 @@ import {
   RedpointLogo,
   SequoiaLogo,
 } from "../logo/works-with-logos";
-import { Shield, Scan, Fingerprint, Lock } from "lucide-react";
+import { } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { navigationItems } from "@/data/nav-data";
 import { DropdownMenuItem } from "@/types/nav-types";
-import { GridPattern } from "../ui/grid-pattern";
 import { DotPattern } from "../ui/dot-pattern";
 
 // Helper to get services from nav data
@@ -46,7 +45,6 @@ const COLORS = [
   "bg-gray-700",
 ];
 
-const ICONS = [Shield, Scan, Fingerprint, Lock];
 
 const InfoBlock = ({
   item,

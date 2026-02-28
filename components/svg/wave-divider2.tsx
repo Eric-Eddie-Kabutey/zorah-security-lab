@@ -11,7 +11,6 @@ interface WaveDivider2Props {
 
 const WaveDivider2: React.FC<WaveDivider2Props> = ({
     className = "",
-    color = "#49FF98",
 }) => {
 
     const stats = [
