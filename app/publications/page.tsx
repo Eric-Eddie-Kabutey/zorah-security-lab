@@ -15,7 +15,7 @@ export default function PublicationsPage() {
       </div>
     </div> */}
 
-    <PageHeader title="Publications" />
+    <PageHeader title="Insights" />
     {/* Publication listing */}
     <PublicationsList publications={publicationsFrontmatter} />
 

@@ -69,13 +69,13 @@ const MenuDropdown: React.FC<{ item: NavItem }> = ({ item }) => {
                     onClick={handleLinkClick}
                     className="flex items-start gap-4 p-4 rounded-md hover:bg-blue-100 transition-colors"
                   >
-                    <Image
+                    {/* <Image
                       src={menuItem.iconUrl}
                       alt={`${menuItem.title} icon`}
                       width={24}
                       height={24}
                       className="mt-1 opacity-90"
-                    />
+                    /> */}
                     <div>
                       <p className="font-semibold text-foreground">{menuItem.title}</p>
                       <p className="text-sm text-gray-600">{menuItem.description}</p>

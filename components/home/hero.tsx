@@ -19,7 +19,7 @@ import { DotPattern } from "../ui/dot-pattern";
 
 // Helper to get services from nav data
 const getServices = () => {
-  const servicesItem = navigationItems.find(item => item.label === 'Services');
+  const servicesItem = navigationItems.find(item => item.label === 'What We Do');
   return servicesItem?.dropdownMenuContent || [];
 };
 
@@ -64,11 +64,11 @@ const InfoBlock = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: index * 0.1 }}
-      className="h-full p-0 md:p-1" // Added p-2 to create a consistent 16px gap between card contents
+      className="h-full" // Added p-2 to create a consistent 16px gap between card contents
     >
       <div
         className={cn(
-          "hero-info-container h-full min-h-[168px]", // Matches the height of the tallest item in the row
+          "hero-info-container h-full min-h-[108px]", // Matches the height of the tallest item in the row
           className,
           "relative overflow-hidden rounded-xl flex flex-col justify-between",
           color,
@@ -83,7 +83,7 @@ const InfoBlock = ({
           <div className="flex justify-between items-start">
             <span
               className={cn(
-                "text-5xl font-mono font-bold tracking-tighter leading-none",
+                "text-4xl font-mono font-bold tracking-tighter leading-none",
                 isDark ? "text-gray-100/70" : "text-gray-900/70"
               )}
             >
@@ -94,7 +94,7 @@ const InfoBlock = ({
           <div className="mt-2 flex flex-col gap-4">
             <h3
               className={cn(
-                "text-xl font-bold uppercase tracking-tight leading-[1.2] max-w-[90%]",
+                "text-lg font-bold uppercase tracking-tight leading-[1.2] max-w-[90%]",
                 isDark ? "text-gray-100" : "text-gray-900"
               )}
             >
@@ -154,7 +154,7 @@ const Hero: React.FC = () => {
     <section className="relative bg-white w-full max-w-[1230px] 2xl:max-w-[1390px] mx-auto h-auto flex flex-col items-start justify-start text-left px-6 overflow-hidden">
 
       {/* Responsive Info Blocks Section */}
-      <div className="w-full mt-4 md:mt-8 mb-10 md:mb-10 z-10">
+      <div className="w-full mt-10 md:mt-20 mb-18 z-10">
         <div className="md:hidden overflow-hidden" ref={emblaRef}>
           <div className="flex">
             {services.map((item, index) => (
@@ -164,7 +164,7 @@ const Hero: React.FC = () => {
             ))}
           </div>
         </div>
-        <div className="hidden md:grid grid-cols-3 gap-0">
+        <div className="hidden md:grid grid-cols-3 gap-8">
           <div className="hero-info-container bg-transparent"></div>
           {services.slice(0, 4).map((item, index) => (
             <InfoBlock key={index} item={item} index={index} className="" />

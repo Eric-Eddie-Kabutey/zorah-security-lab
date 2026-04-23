@@ -27,9 +27,9 @@ const Header = () => {
 
   return (
     <>
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {isHomePage && isAtTop && <AnnouncementBanner />}
-      </AnimatePresence>
+      </AnimatePresence> */}
       <MainHeader />
     </>
   );

@@ -2,15 +2,11 @@ import { NavItem } from '@/types/nav-types'
 
 export const navigationItems: NavItem[] = [
     {
-        label: 'Publications',
-        href: '/publications',
-    },
-    {
-        label: 'About',
+        label: 'Who We Are',
         href: '/about',
     },
     {
-        label: 'Services',
+        label: 'What We Do',
         href: '#',
         dropdownMenuContent: [
             {
@@ -48,9 +44,13 @@ export const navigationItems: NavItem[] = [
         ],
     },
     {
-        label: 'Product',
-        href: '/product',
+        label: 'Insights',
+        href: '/publications',
     },
+    // {
+    //     label: 'Product',
+    //     href: '/product',
+    // },
     {
         label: 'Contact',
         href: '/contact',

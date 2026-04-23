@@ -6,8 +6,8 @@ import Logo from '@/components/logo/brand-logo';
 import { navigationItems } from '@/data/nav-data';
 
 const Footer: React.FC = () => {
-  const services = navigationItems.find(item => item.label === 'Services')?.dropdownMenuContent || [];
-  const mainLinks = navigationItems.filter(item => item.label !== 'Services' && item.label !== 'Join our team');
+  const services = navigationItems.find(item => item.label === 'What We Do')?.dropdownMenuContent || [];
+  const mainLinks = navigationItems.filter(item => item.label !== 'What We Do' && item.label !== 'Join our team');
   const careerLink = navigationItems.find(item => item.label === 'Join our team');
 
   const socialLinks = [
@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Column 4: Nav Links */}
-          <div className="col-span-1 text-left md:text-center">
+          <div className="col-span-1 text-left">
             <h3 className="text-white font-bold mb-4">Company</h3>
             <ul className="flex flex-col gap-3 ">
               {mainLinks.map((link) => (
@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Column 2: Services */}
-          <div className="col-span-1 text-left md:text-center">
+          <div className="col-span-1 text-left">
             <h3 className="text-white font-bold mb-4">Services</h3>
             <ul className="flex flex-col gap-3">
               {services.map((service) => (
@@ -88,7 +88,7 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Column 3: Socials */}
-          <div className="col-span-1 sm:col-span-1 text-left md:text-center">
+          <div className="col-span-1 sm:col-span-1 text-left">
             <h3 className="text-white font-bold mb-4">Socials</h3>
             <ul className="flex flex-col gap-3">
               {socialLinks.map((social) => (
