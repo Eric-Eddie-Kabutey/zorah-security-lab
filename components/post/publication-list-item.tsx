@@ -21,7 +21,7 @@ const PublicationListItem: React.FC<PublicationListItemProps> = ({ publication }
   const isResearch = publication.type === 'research';
 
   return (
-    <Link href={`/publications/${publication.slug}`} className="block group py-12 border-t border-muted border-gray-300">
+    <Link href={`/publications/${publication.slug}`} className="block group py-12 border-t border-muted">
       <div className="grid grid-cols-1 md:grid-cols-5 gap-x-2 gap-y-4">
         {/* Left Column: Date & Type */}
         <div className="md:col-span-2 text-sm text-black flex flex-row md:flex-col gap-x-4">

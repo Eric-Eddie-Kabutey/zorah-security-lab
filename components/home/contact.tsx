@@ -39,7 +39,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section className="bg-background min-h-screen py-24">
+    <section className="bg-background max-h-screen py-24">
       <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-2 overflow-hidden">
         {/* Left Column: Title */}
         <div className="md:col-span-1">

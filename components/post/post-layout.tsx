@@ -10,7 +10,7 @@ const CollaboratorInfo: React.FC<{ name: string }> = ({ name }) => (
   <div className="mt-12">
     <h3 className="text-sm font-semibold tracking-widest text-black mb-2">
       In collaboration with
-    </h3>    
+    </h3>
     <p className="text-lg font-bold text-foreground">{name}</p>
   </div>
 );
@@ -26,21 +26,21 @@ const PostLayout: React.FC<PostLayoutProps> = ({ post, children }) => {
   return (
     <article className="bg-background text-foreground py-24 px-2 md:px-6">
       <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto px-6 py-5 grid grid-cols-1 lg:grid-cols-5 gap-x-4">
-        
+
         {/* SIDEBAR (Table of Contents & Meta) */}
         {/* This entire column is only rendered for 'research' articles */}
         <aside className="hidden lg:block lg:col-span-2">
-        {isResearch && (
-            <div className="sticky top-28">
+          {isResearch && (
+            <div className="sticky top-28 flex flex-col gap-12">
               <TableOfContents />
               {post.collaborator && <CollaboratorInfo name={post.collaborator} />}
             </div>
-        )}
+          )}
         </aside>
 
         {/* SECTION 2: MAIN CONTENT */}
         {/* This column takes up the full width if not research, or 3/5ths if it is */}
-        <div className={'lg:col-span-3 max-w-[572px] mx-auto md:-ml-20'}>
+        <div className={'lg:col-span-3 max-w-[572px] mx-auto'}>
           {/* Post Header (Title & Date) is now INSIDE the main content column */}
           <header className="mb-12">
             <h1 className="text-2xl md:text-5xl text-black font-medium font-serif leading-tight mb-4 max-w-[572px]">
@@ -63,7 +63,7 @@ const PostLayout: React.FC<PostLayoutProps> = ({ post, children }) => {
               />
             </div>
           )}
-          
+
           {/* Rendered MDX Content */}
           <div className="prose prose-lg max-w-none prose-p:text-foreground/80 prose-headings:text-foreground prose-a:text-blue-600 prose-strong:text-foreground">
             {children}

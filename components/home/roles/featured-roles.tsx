@@ -28,17 +28,17 @@ const roleListVariants: Variants = {
 
 const FeaturedRolesSection= ({visible = true}: FeaturedRolesProp) => {
   return (
-    <section className="bg-background py-24">
+    <section className="bg-background">
       <div className="max-w-[1230px] 2xl:max-w-[1390px] mx-auto py-5 px-6 grid grid-cols-1 md:grid-cols-3 gap-4 overflow-hidden">
         {/* Left Column: Section Title */}
         <div>
-          {visible && <h2 className="text-lg font-medium text-foreground">Featured Roles</h2>}
+          {visible && <h2 className="text-xl font-bold uppercase text-gray-900">Featured Roles</h2>}
         </div>
 
         {/* Right Column: Description and Roles List */}
         <div className="md:col-span-2">
           <motion.p
-            className="text-lg text-foreground/80 mb-12"
+            className="text-lg md:text-xl text-gray-500 leading-relaxed mb-12"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}

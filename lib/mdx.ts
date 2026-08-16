@@ -21,7 +21,7 @@ const getAllPosts = <T extends { publishedDate: string; slug: string }>(director
             const fileContent = fs.readFileSync(filePath, 'utf8');
             const { data } = matter(fileContent);
             const slug = fileName.replace(/\.mdx$/, '');
-            
+
             return { ...data, slug } as T;
         });
 
@@ -36,13 +36,14 @@ export const getAllServices = (): ServiceFrontmatter[] => getAllPosts<ServiceFro
 // A generic function to get a single post by slug
 const getPostBySlug = <T extends { slug: string }>(directoryPath: string, slug: string): { frontmatter: T; content: string } | null => {
     try {
-        const filePath = path.join(directoryPath, `${slug}.mdx`);
-        console.log("filepath", filePath);
-        
+        const trimmedSlug = slug.trim();
+        const filePath = path.join(directoryPath, `${trimmedSlug}.mdx`);
+        console.log(`[DEBUG] Reading post ${trimmedSlug} from: |${filePath}|`);
+
         const fileContent = fs.readFileSync(filePath, 'utf8');
         const { data, content } = matter(fileContent);
         return {
-            frontmatter: { ...data, slug } as T, 
+            frontmatter: { ...data, slug } as T,
             content,
         };
     } catch (error) {
@@ -58,10 +59,10 @@ const getPostBySlug = <T extends { slug: string }>(directoryPath: string, slug: 
  */
 export const getServicesByCategory = (category: string): ServiceFrontmatter[] => {
     console.log("category", category);
-    
+
     const categoryPath = path.join(SERVICES_PATH, category);
     console.log("path", categoryPath);
-    
+
 
     // Check if the category directory exists to prevent errors
     if (!fs.existsSync(categoryPath)) {

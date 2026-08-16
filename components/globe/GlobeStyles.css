@@ -1,0 +1,506 @@
+/* GlobeStyles.css */
+/* 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+} */
+
+.globe-container {
+  background-color: #ffffff;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+/* Fogginess / Fade overlays to prevent hard edges */
+.globe-container::before,
+.globe-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 15%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.globe-container::before {
+  left: 0;
+  background: linear-gradient(to right, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.globe-container::after {
+  right: 0;
+  background: linear-gradient(to left, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.fogginess-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 40%),
+    radial-gradient(circle at 75% 50%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 1) 100%);
+}
+
+/* ── Sidebar Stats (Light Theme) ─────────────────────────────────────── */
+#sidebar {
+  position: absolute;
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 320px;
+  color: #333;
+  opacity: 0;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: 30;
+}
+
+#sidebar.visible {
+  opacity: 1;
+  /* transform: translateY(-50%); */
+}
+
+.stat-header {
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 5px;
+  color: #00b4ff;
+  margin-bottom: 12px;
+  text-shadow: 0 0 10px rgba(0, 180, 255, 0.2);
+}
+
+.country-id {
+  font-family: 'Outfit', sans-serif;
+  font-size: 110px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 20px;
+  color: #000;
+  opacity: 0.05;
+  position: absolute;
+  top: -65px;
+  left: -25px;
+}
+
+.country-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 42px;
+  font-weight: 900;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  color: #1a1a1a;
+  border-left: 6px solid #00b4ff;
+  padding-left: 20px;
+}
+
+.country-desc {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 30px;
+  text-align: left;
+  max-width: 95%;
+}
+
+.coords-table {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  border-top: 2px solid rgba(0, 0, 0, 0.08);
+  padding-top: 20px;
+}
+
+.coords-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.coords-label {
+  color: #888;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.coords-value {
+  font-weight: 700;
+  color: #00b4ff;
+}
+
+/* ── HUD overlay (Light Blue Theme) ──────────────────────────────────── */
+#hud {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 320px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 30;
+}
+
+#hud.visible {
+  opacity: 1;
+}
+
+#hud svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Rotating rings */
+.ring-spin-cw {
+  animation: spin-cw 8s linear infinite;
+  transform-origin: center;
+}
+
+.ring-spin-ccw {
+  animation: spin-ccw 6s linear infinite;
+  transform-origin: center;
+}
+
+.ring-spin-slow {
+  animation: spin-cw 20s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes spin-cw {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-ccw {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* Pulsing center dot */
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.4;
+    r: 4;
+  }
+
+  50% {
+    opacity: 1;
+    r: 6;
+  }
+}
+
+/* Corner tick flicker */
+.flicker {
+  animation: flicker 3s steps(1) infinite;
+}
+
+@keyframes flicker {
+
+  0%,
+  100% {
+    opacity: 1
+  }
+
+  15% {
+    opacity: 0.4
+  }
+
+  30% {
+    opacity: 1
+  }
+
+  60% {
+    opacity: 0.6
+  }
+
+  75% {
+    opacity: 1
+  }
+}
+
+/* ── Top Header ────────────────────────────────────────────────────── */
+#top-header {
+  position: absolute;
+  top: 50px;
+  left: 25px;
+  z-index: 35;
+  max-width: 800px;
+}
+
+.header-slogan {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: #00b4ff;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.main-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 72px;
+  font-weight: 900;
+  color: #111;
+  line-height: 0.9;
+  letter-spacing: -3px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.service-headline {
+  font-family: 'Outfit', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #333;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.service-headline::after {
+  content: "";
+  flex-grow: 1;
+  height: 3px;
+  background: #00b4ff;
+  opacity: 0.3;
+}
+
+.lab-description {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #666;
+  max-width: 650px;
+}
+
+.lab-description b {
+  color: #000;
+  font-weight: 700;
+}
+
+/* ── Bottom Status Bar ─────────────────────────────────────────────── */
+#status-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #777;
+  z-index: 38;
+  letter-spacing: 1px;
+}
+
+.status-group {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-indicator {
+  width: 6px;
+  height: 6px;
+  background: #00b4ff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 180, 255, 0.6);
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.4;
+    transform: scale(1.1);
+  }
+}
+
+.status-label {
+  font-weight: 700;
+  color: #333;
+}
+
+.status-val {
+  color: #00b4ff;
+  font-weight: 700;
+}
+
+#live-clock {
+  color: #111;
+  font-weight: 700;
+}
+
+.matrix-bits {
+  opacity: 0.3;
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: #999;
+}
+
+/* ── Responsive Design (Down to 390px) ────────────────────────────────── */
+@media (max-width: 900px) {
+  #top-header {
+    left: 30px;
+    top: 40px;
+    max-width: 80%;
+  }
+
+  #sidebar {
+    left: 30px;
+    width: 280px;
+  }
+
+  .main-title {
+    font-size: 48px;
+  }
+
+  .country-name {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  #top-header {
+    left: 20px;
+    top: 30px;
+    max-width: 90%;
+  }
+
+  #sidebar {
+    left: 20px;
+    width: 85%;
+    top: 65%;
+    transform: translateY(0);
+  }
+
+  #sidebar.visible {
+    transform: translateY(0) translateX(0);
+  }
+
+  .main-title {
+    font-size: 36px;
+    letter-spacing: -1px;
+  }
+
+  .service-headline {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  .header-slogan {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  .lab-description {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .country-name {
+    font-size: 26px;
+  }
+
+  .country-desc {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .country-id {
+    font-size: 80px;
+    top: -50px;
+    left: -10px;
+  }
+
+  #status-bar {
+    padding: 0 15px;
+    height: 36px;
+    font-size: 9px;
+  }
+
+  .status-group:first-child {
+    gap: 12px;
+  }
+
+  .matrix-bits {
+    display: none;
+  }
+
+  .status-item:has(.status-val:not(#live-clock)) {
+    display: none;
+  }
+
+  .status-item:has(#target-count) {
+    display: flex;
+  }
+
+  #hud {
+    width: 240px;
+    height: 240px;
+  }
+}
+
+@media (max-width: 390px) {
+  .main-title {
+    font-size: 32px;
+  }
+
+  .lab-description {
+    font-size: 13px;
+  }
+
+  .country-name {
+    font-size: 22px;
+  }
+
+  .country-desc {
+    font-size: 13px;
+  }
+
+  #sidebar {
+    top: 60%;
+  }
+
+  .coords-table {
+    font-size: 11px;
+  }
+}

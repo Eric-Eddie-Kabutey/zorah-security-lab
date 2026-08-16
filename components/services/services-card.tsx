@@ -16,6 +16,18 @@ interface ServiceCardProps {
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service, categorySlug }) => {
+  // Helper to render basic markdown bold syntax
+  const renderRichText = (text: string) => {
+    if (!text) return null;
+    const parts = text.split(/(\*\*.*?\*\*)/g);
+    return parts.map((part, index) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={index} className="font-bold text-foreground">{part.slice(2, -2)}</strong>;
+      }
+      return part;
+    });
+  };
+
   return (
     <motion.div variants={cardVariants}>
       <Link
@@ -38,7 +50,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, categorySlug }) => {
           <div className="flex flex-col flex-grow">
             <div>
               <h3 className="text-2xl font-semibold text-foreground  mt-2 mb-6">{service.title}</h3>
-              <p className="text-foreground/70 my-4">{service.summary}</p>
+              <p className="text-foreground/70 my-4">
+                {renderRichText(service.summary)}
+              </p>
             </div>
             <div className="mt-auto pt-6 text-sm font-medium text-foreground/80 flex items-center gap-2 group-hover:text-foreground my-2">
               Learn more
