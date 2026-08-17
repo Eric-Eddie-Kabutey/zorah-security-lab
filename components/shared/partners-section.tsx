@@ -16,9 +16,6 @@ interface PartnersSectionProps {
 }
 
 // Define your logo components (or import them from a central file)
-const OpenAILogo = (props: React.SVGProps<SVGSVGElement>) => <svg aria-label="OpenAI Logo" width="91" height="26" viewBox="0 0 91 26" fill="currentColor" {...props}>...</svg>;
-const GoogleLogo = (props: React.SVGProps<SVGSVGElement>) => <svg aria-label="Google Logo" width="91" height="29" viewBox="0 0 91 29" fill="currentColor" {...props}>...</svg>;
-// ... etc. for all logos
 
 const PartnersSection: React.FC<PartnersSectionProps> = ({ groups, animated = false, interval = 5000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);

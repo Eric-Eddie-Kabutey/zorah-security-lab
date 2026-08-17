@@ -33,7 +33,7 @@ const TableOfContents: React.FC = () => {
   if (headings.length === 0) return null;
 
   return (
-    <div className="sticky top-28"> {/* Sticky positioning */}
+    <div> {/* Removed redundant sticky positioning */}
       <h3 className="text-sm md:text-lg font-medium tracking-widest text-foreground/70 mb-4">
         In this article
       </h3>
